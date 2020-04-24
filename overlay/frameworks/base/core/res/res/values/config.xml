@@ -35,24 +35,6 @@
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
     <bool name="config_unplugTurnsOnScreen">true</bool>
 
-    <!-- Boolean indicating whether the wifi chipset supports background scanning mechanism.
-         This mechanism allows the host to remain in suspend state and the dongle to actively
-         scan and wake the host when a configured SSID is detected by the dongle. This chipset
-         capability can provide power savings when wifi needs to be always kept on. -->
-    <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
-
-    <!-- Integer thresholds, do not connect to APs with RSSI lower than these values  -->
-    <integer translatable="false" name="config_wifi_framework_wifi_score_entry_rssi_threshold_5GHz">-82</integer>
-    <integer translatable="false" name="config_wifi_framework_wifi_score_entry_rssi_threshold_24GHz">-85</integer>
-
-    <!-- Integer thresholds for low network score, should be somewhat less than the entry threshholds -->
-    <integer translatable="false" name="config_wifi_framework_wifi_score_bad_rssi_threshold_5GHz">-82</integer>
-    <integer translatable="false" name="config_wifi_framework_wifi_score_bad_rssi_threshold_24GHz">-85</integer>
-
-    <!-- Boolean indicating whether or not to revert to default country code when cellular
-    radio is unable to find any MCC information to infer wifi country code from -->
-    <bool translatable="false" name="config_wifi_revert_country_code_on_cellular_loss">false</bool>
-
     <!-- This string array should be overridden by the device to present a list of network
          attributes.  This is used by the connectivity manager to decide which networks can coexist
          based on the hardware -->
@@ -177,10 +159,6 @@
         <item>GPS_LOCK=0</item>
     </string-array>
 
-    <!-- Configure wifi tcp buffersizes in the form:
-         rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
-    <string name="config_wifi_tcp_buffers">524288,1048576,2097152,262144,524288,1048576</string>
-
     <!-- Flag specifying whether VoLTE TTY is supported -->
     <bool name="config_carrier_volte_tty_supported">true</bool>
 
@@ -270,18 +248,6 @@
          * The device must be provisioned with HDCP keys (for protected content).
     -->
     <bool name="config_enableWifiDisplay">true</bool>
-
-    <!-- Set to true if the wifi display supports compositing content stored
-         in gralloc protected buffers.  For this to be true, there must exist
-         a protected hardware path for surface flinger to composite and send
-         protected buffers to the wifi display video encoder.
-         If this flag is false, we advise applications not to use protected
-         buffers (if possible) when presenting content to a wifi display because
-         the content may be blanked.
-         This flag controls whether the {@link Display#FLAG_SUPPORTS_PROTECTED_BUFFERS}
-         flag is set for wifi displays.
-    -->
-    <bool name="config_wifiDisplaySupportsProtectedBuffers">true</bool>
 
     <!-- Indicate whether closing the lid causes the device to go to sleep and opening
          it causes the device to wake up.

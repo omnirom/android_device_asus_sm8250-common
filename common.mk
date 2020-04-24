@@ -179,10 +179,11 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# Wifi Display
+# Wifi
 PRODUCT_PACKAGES += \
     libavservices_minijail \
     libnl \
+    WifiOverlay
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
