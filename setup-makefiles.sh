@@ -16,43 +16,42 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 set -e
 
-# Required!
-DEVICE=rog2
-VENDOR=asus
+export INITIAL_COPYRIGHT_YEAR=2020
 
-INITIAL_COPYRIGHT_YEAR=2019
-
-# Load extractutils and do some sanity checks
+# Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-CM_ROOT="$MY_DIR"/../../..
+OMNI_ROOT="$MY_DIR"/../../..
 
-HELPER="$CM_ROOT"/vendor/omni/build/tools/extract_utils.sh
+HELPER="$OMNI_ROOT"/vendor/omni/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
 fi
 . "$HELPER"
 
-# Initialize the helper
-setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
+# Initialize the helper for common device
+setup_vendor "$DEVICE_COMMON" "$VENDOR" "$OMNI_ROOT" true
 
-# Copyright headers and guards
-write_headers "rog2"
+# Copyright headers and common guards
+write_headers "rog3 zenfone7"
 
-# The standard blobs
 write_makefiles "$MY_DIR"/proprietary-files.txt
-
 write_makefiles "$MY_DIR"/proprietary-files-product.txt
 
-cat << EOF >> "$ANDROIDMK"
-
-EOF
-
-# We are done!
 write_footers
 
+# Reinitialize the helper for device
+setup_vendor "$DEVICE" "$VENDOR" "$OMNI_ROOT"
+
+# Copyright headers and guards
+write_headers
+
+for BLOB_LIST in "$MY_DIR"/../$DEVICE/proprietary-files*.txt; do
+    write_makefiles $BLOB_LIST
+done
+
+write_footers

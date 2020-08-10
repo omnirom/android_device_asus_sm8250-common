@@ -8,4 +8,3 @@ genfscon sysfs /devices/platform/goodix_ts.0/gesture/gesture_w          u:object
 genfscon sysfs /devices/platform/goodix_ts.0/gesture/gesture_z          u:object_r:sysfs_touchscreen:s0
 genfscon sysfs /devices/platform/goodix_ts.0/gesture/swipeup            u:object_r:sysfs_touchscreen:s0
 genfscon sysfs /devices/platform/goodix_ts.0/glove_mode                 u:object_r:sysfs_touchscreen:s0
-genfscon sysfs /devices/platform/goodix_ts.0/gesture/aod_enable         u:object_r:sysfs_fod:s0

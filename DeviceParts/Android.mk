@@ -1,5 +1,5 @@
 LOCAL_PATH := $(call my-dir)
-ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),rog2))
+ifeq ($(TARGET_DEVICE),$(filter $(TARGET_DEVICE),rog3 zenfone7))
 include $(CLEAR_VARS)
 
 LOCAL_MODULE_TAGS := optional

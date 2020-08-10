@@ -6,9 +6,9 @@
     "revision": "android-10"
   },
   {
-    "remote": "github",
-    "repository": "android_kernel_asus_rog2",
-    "target_path": "kernel/asus/rog2",
+    "remote": "omnirom",
+    "repository": "android_kernel_asus_sm8250",
+    "target_path": "kernel/asus/sm8250",
     "revision": "android-10"
   },
   {

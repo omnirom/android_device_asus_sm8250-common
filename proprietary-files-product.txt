@@ -17,7 +17,6 @@ product/lib/vendor.qti.hardware.btconfigstore@1.0.so
 product/lib/libQTEEConnector_system.so
 product/lib/libimscamera_jni.so
 product/lib/libseccam.so
-product/lib/vendor.qti.hardware.camera.device@1.0.so
 product/lib/vendor.qti.hardware.cvp@1.0.so
 product/lib/vendor.qti.hardware.scve.objecttracker@1.0-adapter-helper.so
 product/lib/vendor.qti.hardware.scve.objecttracker@1.0.so
@@ -27,7 +26,6 @@ product/lib/vendor.qti.hardware.sensorscalibrate@1.0.so
 product/lib64/libQTEEConnector_system.so
 product/lib64/libimscamera_jni.so
 product/lib64/libseccam.so
-product/lib64/vendor.qti.hardware.camera.device@1.0.so
 product/lib64/vendor.qti.hardware.scve.objecttracker@1.0-adapter-helper.so
 product/lib64/vendor.qti.hardware.scve.objecttracker@1.0.so
 product/lib64/vendor.qti.hardware.scve.panorama@1.0-adapter-helper.so
@@ -98,8 +96,6 @@ product/lib64/vendor.qti.voiceprint@1.0.so
 
 # IMS
 -product/priv-app/ims/ims.apk|411603cd3e3ae8b2658b56e5c91d74ff9f1dc8c2
-lib/libdiag_system.so
-lib64/libdiag_system.so
 -product/framework/com.qualcomm.qti.imscmservice-V2.0-java.jar
 -product/framework/com.qualcomm.qti.imscmservice-V2.1-java.jar
 -product/framework/com.qualcomm.qti.imscmservice-V2.2-java.jar
@@ -117,6 +113,7 @@ product/lib/com.qualcomm.qti.imscmservice@2.0.so
 product/lib/com.qualcomm.qti.imscmservice@2.1.so
 product/lib/com.qualcomm.qti.imscmservice@2.2.so
 product/lib/com.qualcomm.qti.uceservice@2.0.so
+product/lib/libdiag_system.so
 product/lib/libimscamera_jni.so
 product/lib/libimsmedia_jni.so
 product/lib/lib-imsvideocodec.so
@@ -145,6 +142,7 @@ product/lib64/com.qualcomm.qti.imscmservice@2.0.so
 product/lib64/com.qualcomm.qti.imscmservice@2.1.so
 product/lib64/com.qualcomm.qti.imscmservice@2.2.so
 product/lib64/com.qualcomm.qti.uceservice@2.0.so
+product/lib64/libdiag_system.so
 product/lib64/libimsmedia_jni.so
 product/lib64/lib-imsvideocodec.so
 product/lib64/lib-imsvtextutils.so
