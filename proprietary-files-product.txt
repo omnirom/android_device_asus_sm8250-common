@@ -55,7 +55,8 @@ product/etc/permissions/UimGbaManager.xml
 -product/framework/uimgbamanagerlibrary.jar
 -product/framework/uimlpalibrary.jar
 -product/framework/uimservicelibrary.jar
--product/framework/qti-telephony-common.jar|c22616791b85fe249cb23bf5a332f919f1b5471f
+# Smali edit: https://gist.github.com/luca020400/7a6b05494c32d09c4e56e9285a2a5e32
+-product/framework/qti-telephony-common.jar|e975392b63e446d09407427ff934959047d5b16a
 -product/framework/vendor.qti.hardware.data.dynamicdds-V1.0-java.jar
 -product/framework/vendor.qti.data.factory-V1.0-java.jar
 -product/framework/vendor.qti.data.factory-V2.0-java.jar
@@ -95,7 +96,8 @@ product/lib64/vendor.qti.latency@2.0.so
 product/lib64/vendor.qti.voiceprint@1.0.so
 
 # IMS
--product/priv-app/ims/ims.apk|411603cd3e3ae8b2658b56e5c91d74ff9f1dc8c2
+# Smali edit: https://gist.github.com/luca020400/b0152c9b77e55f50eee0513cf666f61c
+-product/priv-app/ims/ims.apk|ad21ae18bdfbd21c7020efeb8fa34b5800f4af08
 -product/framework/com.qualcomm.qti.imscmservice-V2.0-java.jar
 -product/framework/com.qualcomm.qti.imscmservice-V2.1-java.jar
 -product/framework/com.qualcomm.qti.imscmservice-V2.2-java.jar
