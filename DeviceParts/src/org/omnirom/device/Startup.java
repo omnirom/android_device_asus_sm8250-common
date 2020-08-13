@@ -21,7 +21,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.SystemProperties;
 import androidx.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -123,16 +122,6 @@ public class Startup extends BroadcastReceiver {
         }
         enabled = !value.equals(AppSelectListPreference.DISABLED_ENTRY);
         restore(GestureSettings.getGestureFile(GestureSettings.KEY_Z_APP), enabled);
-
-        value = Settings.System.getString(context.getContentResolver(), DeviceSettings.TEMP_FPS);
-        if (TextUtils.isEmpty(value)) {
-            value = DeviceSettings.DEFAULT_FPS_VALUE;
-            Settings.System.putString(context.getContentResolver(), DeviceSettings.TEMP_FPS, value);
-            SystemProperties.set(DeviceSettings.VENDOR_FPS, value);
-        } else {
-        Settings.System.putString(context.getContentResolver(), DeviceSettings.TEMP_FPS, value);
-        SystemProperties.set(DeviceSettings.VENDOR_FPS, value);
-        }
 
         enabled = Settings.System.getInt(context.getContentResolver(), GloveModeSwitch.SETTINGS_KEY, 0) != 0;
         if (enabled) {
