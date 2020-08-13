@@ -76,7 +76,7 @@ PRODUCT_PACKAGES += \
     font_charger.png
 
 # DeviceParts
-#PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
     DeviceParts \
     OmniDisplayManager
 
