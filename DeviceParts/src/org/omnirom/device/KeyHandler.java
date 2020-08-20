@@ -80,6 +80,10 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int KEY_BACK = 158;
     private static final int KEY_RECENTS = 580;
 
+    private static final int KEY_GESTURE_PAUSE = 119;
+    private static final int KEY_GESTURE_FORWARD = 159;
+    private static final int KEY_GESTURE_REWIND  =168;
+
     private static final int KEY_GESTURE_E = 18;
     private static final int KEY_GESTURE_M = 50;
     private static final int KEY_GESTURE_S = 31;
@@ -102,7 +106,10 @@ public class KeyHandler implements DeviceKeyHandler {
         KEY_GESTURE_S,
         KEY_GESTURE_V,
         KEY_GESTURE_W,
-        KEY_GESTURE_Z
+        KEY_GESTURE_Z,
+        KEY_GESTURE_PAUSE,
+        KEY_GESTURE_FORWARD,
+        KEY_GESTURE_REWIND
     };
 
     private static final int[] sProxiCheckedGestures = new int[]{
@@ -112,7 +119,10 @@ public class KeyHandler implements DeviceKeyHandler {
         KEY_GESTURE_S,
         KEY_GESTURE_V,
         KEY_GESTURE_W,
-        KEY_GESTURE_Z
+        KEY_GESTURE_Z,
+        KEY_GESTURE_PAUSE,
+        KEY_GESTURE_FORWARD,
+        KEY_GESTURE_REWIND
     };
 
     protected final Context mContext;
@@ -496,6 +506,18 @@ public class KeyHandler implements DeviceKeyHandler {
             case KEY_GESTURE_Z:
                 return Settings.System.getStringForUser(mContext.getContentResolver(),
                     GestureSettings.DEVICE_GESTURE_MAPPING_5, UserHandle.USER_CURRENT);
+            case  KEY_GESTURE_PAUSE:
+                if (DEBUG) Log.i(TAG, "Music Play/Pause");
+                OmniUtils.sendKeycode(KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE);
+                break;
+            case KEY_GESTURE_FORWARD:
+                if (DEBUG) Log.i(TAG, "Music Next");
+                OmniUtils.sendKeycode(KeyEvent.KEYCODE_MEDIA_NEXT);
+                break;
+            case KEY_GESTURE_REWIND:
+                if (DEBUG) Log.i(TAG, "Music Previous");
+                OmniUtils.sendKeycode(KeyEvent.KEYCODE_MEDIA_PREVIOUS);
+                break;
         }
         return null;
     }
