@@ -30,7 +30,7 @@
 
     <string name="choose_app">Choose app</string>
     <string name="offscreen_gesture_title">Offscreen gestures</string>
-    <string name="category_c_gesture">Letter c</string>
+    <string name="category_m_gesture">Letter m</string>
     <string name="category_e_gesture">Letter e</string>
     <string name="category_s_gesture">Letter s</string>
     <string name="category_v_gesture">Letter v</string>
