@@ -130,5 +130,10 @@ public class Startup extends BroadcastReceiver {
 
         enabled = Settings.System.getInt(context.getContentResolver(), GestureSettings.SETTINGS_GESTURE_KEY, 0) != 0;
         restore(GestureSettings.getFile(), enabled);
+
+        enabled = Settings.System.getInt(context.getContentResolver(), GestureSettings.KEY_MUSIC, 0) != 0;
+        if (enabled) {
+             Utils.writeLine(GestureSettings.MUSIC_PATH, "10000001");
+        }
     }
 }

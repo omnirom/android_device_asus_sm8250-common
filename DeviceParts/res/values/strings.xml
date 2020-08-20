@@ -30,6 +30,8 @@
 
     <string name="choose_app">Choose app</string>
     <string name="offscreen_gesture_title">Offscreen gestures</string>
+    <string name="music_control_title">Music Control</string>
+    <string name="music_control_summary">"Draw | | with two fingers to pause/resume music, and &lt; or &gt; to change track"</string>
     <string name="category_m_gesture">Letter m</string>
     <string name="category_e_gesture">Letter e</string>
     <string name="category_s_gesture">Letter s</string>
