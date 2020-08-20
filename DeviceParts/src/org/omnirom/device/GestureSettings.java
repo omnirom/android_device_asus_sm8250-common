@@ -60,8 +60,8 @@ public class GestureSettings extends PreferenceFragment implements
 
     public static final String SETTINGS_GESTURE_KEY = KEY_SETTINGS_SWIPEUP_PREFIX + KEY_SWIPEUP_SWITCH;
 
-    public static final String KEY_C_APP = "c_gesture_app";
     public static final String KEY_E_APP = "e_gesture_app";
+    public static final String KEY_M_APP = "m_gesture_app";
     public static final String KEY_S_APP = "s_gesture_app";
     public static final String KEY_V_APP = "v_gesture_app";
     public static final String KEY_W_APP = "w_gesture_app";
@@ -76,8 +76,8 @@ public class GestureSettings extends PreferenceFragment implements
 
     private TwoStatePreference mProxiSwitch;
     private TwoStatePreference mSwipeUpSwitch;
-    private AppSelectListPreference mLetterCGesture;
     private AppSelectListPreference mLetterEGesture;
+    private AppSelectListPreference mLetterMGesture;
     private AppSelectListPreference mLetterSGesture;
     private AppSelectListPreference mLetterVGesture;
     private AppSelectListPreference mLetterWGesture;
@@ -97,17 +97,17 @@ public class GestureSettings extends PreferenceFragment implements
         mProxiSwitch.setChecked(Settings.System.getInt(getContext().getContentResolver(),
                 Settings.System.OMNI_DEVICE_PROXI_CHECK_ENABLED, 1) != 0);
 
-        mLetterCGesture = (AppSelectListPreference) findPreference(KEY_C_APP);
-        mLetterCGesture.setEnabled(isGestureSupported(KEY_C_APP));
-        String value = Settings.System.getString(getContext().getContentResolver(), DEVICE_GESTURE_MAPPING_0);
-        mLetterCGesture.setValue(value);
-        mLetterCGesture.setOnPreferenceChangeListener(this);
-
         mLetterEGesture = (AppSelectListPreference) findPreference(KEY_E_APP);
         mLetterEGesture.setEnabled(isGestureSupported(KEY_E_APP));
-        value = Settings.System.getString(getContext().getContentResolver(), DEVICE_GESTURE_MAPPING_1);
+        String value = Settings.System.getString(getContext().getContentResolver(), DEVICE_GESTURE_MAPPING_0);
         mLetterEGesture.setValue(value);
         mLetterEGesture.setOnPreferenceChangeListener(this);
+
+        mLetterMGesture = (AppSelectListPreference) findPreference(KEY_M_APP);
+        mLetterMGesture.setEnabled(isGestureSupported(KEY_M_APP));
+        value = Settings.System.getString(getContext().getContentResolver(), DEVICE_GESTURE_MAPPING_1);
+        mLetterMGesture.setValue(value);
+        mLetterMGesture.setOnPreferenceChangeListener(this);
 
         mLetterSGesture = (AppSelectListPreference) findPreference(KEY_S_APP);
         mLetterSGesture.setEnabled(isGestureSupported(KEY_S_APP));
@@ -162,15 +162,15 @@ public class GestureSettings extends PreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mLetterCGesture) {
-            String value = (String) newValue;
-            boolean gestureDisabled = value.equals(AppSelectListPreference.DISABLED_ENTRY);
-            setGestureEnabled(KEY_C_APP, !gestureDisabled);
-            Settings.System.putString(getContext().getContentResolver(), DEVICE_GESTURE_MAPPING_0, value);
-        } else if (preference == mLetterEGesture) {
+        if (preference == mLetterEGesture) {
             String value = (String) newValue;
             boolean gestureDisabled = value.equals(AppSelectListPreference.DISABLED_ENTRY);
             setGestureEnabled(KEY_E_APP, !gestureDisabled);
+            Settings.System.putString(getContext().getContentResolver(), DEVICE_GESTURE_MAPPING_0, value);
+        } else if (preference == mLetterMGesture) {
+            String value = (String) newValue;
+            boolean gestureDisabled = value.equals(AppSelectListPreference.DISABLED_ENTRY);
+            setGestureEnabled(KEY_M_APP, !gestureDisabled);
             Settings.System.putString(getContext().getContentResolver(), DEVICE_GESTURE_MAPPING_1, value);
         } else if (preference == mLetterSGesture) {
             String value = (String) newValue;
@@ -205,10 +205,10 @@ public class GestureSettings extends PreferenceFragment implements
 
     public static String getGestureFile(String key) {
         switch(key) {
-            case KEY_C_APP:
-                return "/sys/devices/platform/goodix_ts.0/gesture/gesture_c";
             case KEY_E_APP:
                 return "/sys/devices/platform/goodix_ts.0/gesture/gesture_e";
+            case KEY_M_APP:
+                return "/sys/devices/platform/goodix_ts.0/gesture/gesture_m";
             case KEY_S_APP:
                 return "/sys/devices/platform/goodix_ts.0/gesture/gesture_s";
             case KEY_V_APP:
@@ -279,8 +279,8 @@ public class GestureSettings extends PreferenceFragment implements
 
         @Override
         protected void onPostExecute(Void feed) {
-            mLetterCGesture.setPackageList(mInstalledPackages);
             mLetterEGesture.setPackageList(mInstalledPackages);
+            mLetterMGesture.setPackageList(mInstalledPackages);
             mLetterSGesture.setPackageList(mInstalledPackages);
             mLetterVGesture.setPackageList(mInstalledPackages);
             mLetterWGesture.setPackageList(mInstalledPackages);

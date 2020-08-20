@@ -29,13 +29,13 @@
             android:persistent="false" />
 
         <org.omnirom.device.AppSelectListPreference
-            android:key="c_gesture_app"
-            android:title="@string/category_c_gesture"
+            android:key="e_gesture_app"
+            android:title="@string/category_e_gesture"
             android:persistent="false" />
 
         <org.omnirom.device.AppSelectListPreference
-            android:key="e_gesture_app"
-            android:title="@string/category_e_gesture"
+            android:key="m_gesture_app"
+            android:title="@string/category_m_gesture"
             android:persistent="false" />
 
         <org.omnirom.device.AppSelectListPreference
