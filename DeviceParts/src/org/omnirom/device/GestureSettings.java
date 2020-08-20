@@ -66,6 +66,7 @@ public class GestureSettings extends PreferenceFragment implements
     public static final String KEY_V_APP = "v_gesture_app";
     public static final String KEY_W_APP = "w_gesture_app";
     public static final String KEY_Z_APP = "z_gesture_app";
+    public static final String KEY_MUSIC = "music_gesture_app";
 
     public static final String DEVICE_GESTURE_MAPPING_0 = "device_gesture_mapping_0_0";
     public static final String DEVICE_GESTURE_MAPPING_1 = "device_gesture_mapping_1_0";
@@ -74,6 +75,7 @@ public class GestureSettings extends PreferenceFragment implements
     public static final String DEVICE_GESTURE_MAPPING_4 = "device_gesture_mapping_4_0";
     public static final String DEVICE_GESTURE_MAPPING_5 = "device_gesture_mapping_5_0";
 
+    private TwoStatePreference mMusicSwitch;
     private TwoStatePreference mProxiSwitch;
     private TwoStatePreference mSwipeUpSwitch;
     private AppSelectListPreference mLetterEGesture;
@@ -83,6 +85,7 @@ public class GestureSettings extends PreferenceFragment implements
     private AppSelectListPreference mLetterWGesture;
     private AppSelectListPreference mLetterZGesture;
 
+    public static final String MUSIC_PATH = "/proc/driver/gesture_type";
     private static final String SWIPEUP_PATH = "/sys/devices/platform/goodix_ts.0/gesture/swipeup";
 
     private List<AppSelectListPreference.PackageItem> mInstalledPackages = new LinkedList<AppSelectListPreference.PackageItem>();
@@ -92,6 +95,11 @@ public class GestureSettings extends PreferenceFragment implements
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.gesture_settings, rootKey);
         mPm = getContext().getPackageManager();
+
+        mMusicSwitch = (TwoStatePreference) findPreference(KEY_MUSIC);
+        mMusicSwitch.setChecked(Settings.System.getInt(getContext().getContentResolver(),
+                KEY_MUSIC, 0) == 1);
+        mMusicSwitch.setOnPreferenceChangeListener(this);
 
         mProxiSwitch = (TwoStatePreference) findPreference(KEY_PROXI_SWITCH);
         mProxiSwitch.setChecked(Settings.System.getInt(getContext().getContentResolver(),
@@ -150,6 +158,16 @@ public class GestureSettings extends PreferenceFragment implements
         if (preference == mProxiSwitch) {
             Settings.System.putInt(getContext().getContentResolver(),
                     Settings.System.OMNI_DEVICE_PROXI_CHECK_ENABLED, mProxiSwitch.isChecked() ? 1 : 0);
+            return true;
+        }
+        if (preference == mMusicSwitch) {
+            Settings.System.putInt(getContext().getContentResolver(), KEY_MUSIC, mMusicSwitch.isChecked() ? 1 : 0);
+            boolean enabled = Settings.System.getInt(getContext().getContentResolver(), KEY_MUSIC, 0) != 0;
+            if (enabled) {
+                Utils.writeLine(MUSIC_PATH, "10000001");
+            } else {
+                Utils.writeLine(MUSIC_PATH, "00000000");
+            }
             return true;
         }
         if (preference == mSwipeUpSwitch) {
