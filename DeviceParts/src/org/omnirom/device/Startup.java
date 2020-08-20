@@ -63,7 +63,7 @@ public class Startup extends BroadcastReceiver {
 
     public static void restoreAfterUserSwitch(Context context) {
 
-        // C Gesture
+        // E Gesture
         String mapping = GestureSettings.DEVICE_GESTURE_MAPPING_0;
         String value = Settings.System.getString(context.getContentResolver(), mapping);
         if (TextUtils.isEmpty(value)) {
@@ -71,9 +71,9 @@ public class Startup extends BroadcastReceiver {
             Settings.System.putString(context.getContentResolver(), mapping, value);
         }
         boolean enabled = !value.equals(AppSelectListPreference.DISABLED_ENTRY);
-        restore(GestureSettings.getGestureFile(GestureSettings.KEY_C_APP), enabled);
+        restore(GestureSettings.getGestureFile(GestureSettings.KEY_E_APP), enabled);
 
-        // E Gesture
+        // M Gesture
         mapping = GestureSettings.DEVICE_GESTURE_MAPPING_1;
         value = Settings.System.getString(context.getContentResolver(), mapping);
         if (TextUtils.isEmpty(value)) {
@@ -81,7 +81,7 @@ public class Startup extends BroadcastReceiver {
             Settings.System.putString(context.getContentResolver(), mapping, value);
         }
         enabled = !value.equals(AppSelectListPreference.DISABLED_ENTRY);
-        restore(GestureSettings.getGestureFile(GestureSettings.KEY_E_APP), enabled);
+        restore(GestureSettings.getGestureFile(GestureSettings.KEY_M_APP), enabled);
 
         // S Gesture
         mapping = GestureSettings.DEVICE_GESTURE_MAPPING_2;
