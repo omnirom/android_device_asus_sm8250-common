@@ -80,8 +80,8 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int KEY_BACK = 158;
     private static final int KEY_RECENTS = 580;
 
-    private static final int KEY_GESTURE_C = 46;
     private static final int KEY_GESTURE_E = 18;
+    private static final int KEY_GESTURE_M = 50;
     private static final int KEY_GESTURE_S = 31;
     private static final int KEY_GESTURE_V = 47;
     private static final int KEY_GESTURE_W = 17;
@@ -97,8 +97,8 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private static final int[] sSupportedGestures = new int[]{
         KEY_DOUBLE_TAP,
-        KEY_GESTURE_C,
         KEY_GESTURE_E,
+        KEY_GESTURE_M,
         KEY_GESTURE_S,
         KEY_GESTURE_V,
         KEY_GESTURE_W,
@@ -107,8 +107,8 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private static final int[] sProxiCheckedGestures = new int[]{
         KEY_DOUBLE_TAP,
-        KEY_GESTURE_C,
         KEY_GESTURE_E,
+        KEY_GESTURE_M,
         KEY_GESTURE_S,
         KEY_GESTURE_V,
         KEY_GESTURE_W,
@@ -478,10 +478,10 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private String getGestureValueForScanCode(int scanCode) {
         switch(scanCode) {
-            case KEY_GESTURE_C:
+            case KEY_GESTURE_E:
                 return Settings.System.getStringForUser(mContext.getContentResolver(),
                     GestureSettings.DEVICE_GESTURE_MAPPING_0, UserHandle.USER_CURRENT);
-            case KEY_GESTURE_E:
+            case KEY_GESTURE_M:
                 return Settings.System.getStringForUser(mContext.getContentResolver(),
                     GestureSettings.DEVICE_GESTURE_MAPPING_1, UserHandle.USER_CURRENT);
             case KEY_GESTURE_S:
