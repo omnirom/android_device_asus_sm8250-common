@@ -7,4 +7,5 @@ genfscon sysfs /devices/platform/goodix_ts.0/gesture/gesture_v          u:object
 genfscon sysfs /devices/platform/goodix_ts.0/gesture/gesture_w          u:object_r:sysfs_touchscreen:s0
 genfscon sysfs /devices/platform/goodix_ts.0/gesture/gesture_z          u:object_r:sysfs_touchscreen:s0
 genfscon sysfs /devices/platform/goodix_ts.0/gesture/swipeup            u:object_r:sysfs_touchscreen:s0
+genfscon proc /driver/gesture_type             u:object_r:sysfs_touchscreen:s0
 genfscon proc /driver/glove             u:object_r:sysfs_touchscreen:s0
