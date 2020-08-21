@@ -183,6 +183,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_PACKAGES += \
     libavservices_minijail \
     libnl \
+    TetheringOverlay \
     WifiOverlay
 
 PRODUCT_BOOT_JARS += \
