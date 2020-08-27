@@ -72,7 +72,7 @@ telephony.lteOnCdmaDevice=1
 persist.fuse_sdcard=true
 
 #System props for BT
-ro.bluetooth.library_name=libbluetooth_qti.so
+#ro.bluetooth.library_name=libbluetooth_qti.so
 persist.vendor.btstack.aac_frm_ctl.enabled=true
 persist.vendor.btstack.enable.twsplus=true
 persist.vendor.btstack.enable.twsplussho=true
@@ -142,25 +142,6 @@ av.offload.enable=true
 #enable voice path for PCM VoIP by default
 use.voice.path.for.pcm.voip=true
 
-#ASUS_BSP Add for Dirac sound effect feature
-ro.vendor.dirac.acs.controller=gef
-ro.vendor.dirac.acs.storeSettings=1
-ro.vendor.dirac.acs.ignore_error=1
-ro.vendor.dirac.gef.int.did=0xF,0x313,0x2c4
-ro.vendor.dirac.gef.ext.did=0xA,0x2D,0x14,0x2c9,0x2ca
-ro.vendor.dirac.gef.int.tid=0x10012D00
-ro.vendor.dirac.gef.int.mid=0x10012DE0
-ro.vendor.dirac.gef.ext.mid=0x10012DE1
-ro.vendor.dirac.config=16
-ro.vendor.dirac.acs.rotation=true
-
-ro.vendor.dirac.gef.system_sound=1
-ro.vendor.dirac.gef.ins.tid=0x10012D02
-ro.vendor.dirac.gef.ins.mid=0x10012DE2
-ro.vendor.dirac.gef.ins.did=0x313,0x2c4
-ro.vendor.dirac.gef.ins.appt=0x00011130,0x00011131,0x00011134
-ro.vendor.dirac.gef.ext.appt=0x00011130,0x00011131,0x00011134
-
 # system prop for NFC DT
 ro.nfc.port=I2C
 
@@ -173,19 +154,6 @@ sys.qca1530=detect
 #Enable stm events
 persist.debug.coresight.config=stm-events
 
-#hwui properties
-ro.hwui.texture_cache_size=72
-ro.hwui.layer_cache_size=48
-ro.hwui.r_buffer_cache_size=8
-ro.hwui.path_cache_size=32
-ro.hwui.gradient_cache_size=1
-ro.hwui.drop_shadow_cache_size=6
-ro.hwui.texture_cache_flushrate=0.4
-ro.hwui.text_small_cache_width=1024
-ro.hwui.text_small_cache_height=1024
-ro.hwui.text_large_cache_width=2048
-ro.hwui.text_large_cache_height=1024
-
 config.disable_rtt=true
 
 #Bringup properties
@@ -195,8 +163,7 @@ ro.kernel.qemu.gles=0
 qemu.hw.mainkeys=0
 
 #Expose aux camera for below packages
-vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.qualcomm.saltproject2,com.asus.camera
-
+vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.asus.snapcam,com.asus.camera
 
 #enable IZat OptInApp overlay
 persist.vendor.overlay.izat.optin=rro
@@ -225,60 +192,9 @@ persist.vendor.sys.downloadmode.enable=0
 # [ASUS BSP] for Poweroff Alarm Support
 ro.vendor.asus.poweroffalarm_support=1
 
-
-#[ASUS IMS] Enable updatable APEX module
-ro.apex.updatable=true
-
-#ASUS_BSP : Obiwan use ACCY generation III
-vendor.asus.accy_gen=3
-
-#ASUS_BSP : Obiwan set default property value
-vendor.asus.accy.fw_status=000000
-vendor.asus.accy.fw_status2=000000
-vendor.asus.accy.fw_status3=000000
-vendor.station.hwid=none
-vendor.station.generation=none
-
-#add for vibration intensity
-ro.vendor.asus.scale_low_max_amp=84
-ro.vendor.asus.scale_none_max_amp=168
-
 vendor.iop.enable_uxe=0
 # end of device/qcom/qssi/system.prop
 
 ro.vendor.build.asus.sku=WW
-vendor.camera.asus.system=1
-vendor.camera.expTimeMax=0
-vendor.camera.cam6.crop_region=0,0,4224,3136;877,651,3347,2485
-vendor.camera.preview_beauty=4:1;1:1;2:1;3:1;5:1;6:1
-vendor.camera.preview_portrait=4:0;1:1;2:0;3:0
-vendor.camera.cam4.video_fps=HD@60,FHD@60,4K@60
-vendor.camera.cam1.video_fps=HD@60,FHD@60
-vendor.camera.cam2.video_fps=HD@60,FHD@60,4K@30
-vendor.camera.cam3.video_fps=HD@30,FHD@30
-vendor.camera.cam6.video_fps=HD@60,FHD@60,4K@30
-vendor.camera.dual_bokeh=4:0;1:0;2:0;3:0;5:1
-vendor.camera.lens_type=4:standard;1:standard;2:wide-angle;3:macro;5:virtual;6:sat
-vendor.camera.use_frame_processor=0
-vendor.camera.ai_scene_mode=4:1;1:1;2:1;3:1;6:1
-vendor.camera.undistortion.preview=4:0;1:0;2:1;3:0;6:1
-vendor.camera.undistortion.video=4:0;1:0;2:0;3:0
-vendor.camera.capture.override_max_digital_zoom=4:8;1:8
-vendor.camera.cam4.stream_list=1P/2Y/1J
-vendor.camera.cam1.stream_list=1P/2Y/1J
-vendor.camera.cam4.exposure_time_range=100000,32000000000
-vendor.camera.cam1.exposure_time_range=100000,32000000000
-vendor.camera.cam2.exposure_time_range=100000,16000000000
-vendor.camera.cam3.exposure_time_range=100000,16000000000
-vendor.camera.cam0.eis.sup_list=4K@30,FHD@60,FHD@30,HD@30
-vendor.camera.cam4.eis.sup_list=8K@30,4K@60,4K@30,FHD@60,FHD@30,HD@30
-vendor.camera.cam1.eis.sup_list=FHD@60,FHD@30,HD@30
-vendor.camera.cam2.eis.sup_list=4K@30,FHD@60,FHD@30,HD@30
-vendor.camera.cam3.eis.sup_list=FHD@30,HD@30
-vendor.camera.cam6.eis.sup_list=8K@30,4k@60,4K@30,FHD@60,FHD@30,HD@30
-vendor.camera.fovc=0:0;1:0;2:0;3:0;4:1;5:0;6:0
-vendor.camera.night=4:1;1:0;2:1;3:0;6:1
-vendor.camera.aux.packagelist=org.codeaurora.snapcam,android
 ro.vendor.qti.va_aosp.support=1
-
 persist.sys.fflag.override.settings_network_and_internet_v2=true
