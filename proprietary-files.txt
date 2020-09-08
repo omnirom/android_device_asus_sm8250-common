@@ -271,6 +271,7 @@ lib64/libwfduibcsrc.so
 product/lib/vendor.qti.hardware.wifidisplaysession@1.0.so
 product/lib64/vendor.qti.hardware.wifidisplaysession@1.0.so
 product/lib64/vendor.qti.hardware.wifi.keystore@1.0.so
+-priv-app/AsusVisualMaster/AsusVisualMaster.apk
 
 # Wlan
 -product/framework/vendor.qti.hardware.data.iwlan-V1.0-java.jar
