@@ -183,9 +183,17 @@ product/lib/libGPQTEEC_system.qti.so
 product/lib64/libGPTEE_system.qti.so
 product/lib64/libQTEEConnector_system.so
 product/lib64/libGPQTEEC_system.qti.so
-product/lib/libsecureuisvc_jni.so
-product/lib/libsecureui_svcsock_system.so
-product/lib64/libsecureuisvc_jni.so
-product/lib64/libsecureui_svcsock_system.so
 product/lib/vendor.qti.hardware.qteeconnector@1.0.so
 product/lib64/vendor.qti.hardware.qteeconnector@1.0.so
+
+# Secure
+-product/app/com.qualcomm.qti.services.secureui/com.qualcomm.qti.services.secureui.apk
+product/lib64/libseccamservice.so
+product/lib64/libsecureui_svcsock_system.so
+product/lib64/libsecureuisvc_jni.so
+product/lib64/vendor.qti.hardware.tui_comm@1.0.so
+-product/priv-app/seccamservice/seccamservice.apk
+
+# System Helper
+-product/app/com.qualcomm.qti.services.systemhelper/com.qualcomm.qti.services.systemhelper.apk
+product/lib64/libsystemhelper_jni.so
