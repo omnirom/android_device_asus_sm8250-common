@@ -106,6 +106,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
 
+# HIDL
+PRODUCT_PACKAGES += \
+    libhidltransport \
+    libhwbinder
+
 # fastbootd
 PRODUCT_PACKAGES += \
     fastbootd
