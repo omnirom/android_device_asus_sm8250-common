@@ -63,6 +63,10 @@ TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
 PRODUCT_PACKAGES += \
     AntHalService
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    BluetoothQti
+
 # Boot control
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl.recovery \
