@@ -1,4 +1,32 @@
 [
+   {
+    "remote": "github",
+    "repository": "darkobas/android_system_bt",
+    "target_path": "system/bt",
+    "revision": "android-10-caf",
+    "override": "android_system_bt"
+  },
+  {
+    "remote": "github",
+    "repository": "darkobas/android_packages_apps_Bluetooth",
+    "target_path": "packages/apps/Bluetooth",
+    "revision": "android-10-caf",
+    "override": "android_packages_apps_Bluetooth"
+  },
+  {
+    "remote": "github",
+    "repository": "micky387/android_frameworks_base",
+    "target_path": "frameworks/base",
+    "revision": "android-10",
+    "override": "android_frameworks_base"
+  },
+  {
+    "remote": "github",
+    "repository": "micky387/android_vendor_qcom_opensource_interfaces",
+    "target_path": "vendor/qcom/opensource/interfaces",
+    "revision": "android-10",
+    "override": "android_vendor_qcom_opensource_interfaces"
+  },
   {
     "remote": "omnirom",
     "repository": "android_device_qcom_caf-sepolicy",
@@ -12,9 +40,33 @@
     "revision": "android-10"
   },
   {
-     "remote": "omnirom",
-     "repository": "android_vendor_qcom_opensource_fm-commonsys",
-     "target_path": "vendor/qcom/opensource/fm-commonsys",
-     "revision": "android-10"
-   }
+    "remote": "omnirom",
+    "repository": "android_vendor_qcom_opensource_fm-commonsys",
+    "target_path": "vendor/qcom/opensource/fm-commonsys",
+    "revision": "android-10"
+  },
+  {
+    "remote": "github",
+    "repository": "micky387/android_vendor_qcom_opensource_bluetooth-commonsys-intf",
+    "target_path": "vendor/qcom/opensource/commonsys-intf/bluetooth",
+    "revision": "android-10"
+  },
+  {
+    "remote": "github",
+    "repository": "micky387/android_vendor_qcom_opensource_bluetooth_ext",
+    "target_path": "vendor/qcom/opensource/commonsys/bluetooth_ext",
+    "revision": "android-10"
+  },
+  {
+    "remote": "github",
+    "repository": "micky387/android_vendor_qcom_opensource_packages_apps_Bluetooth",
+    "target_path": "vendor/qcom/opensource/packages/apps/Bluetooth",
+    "revision": "android-10"
+  },
+  {
+    "remote": "github",
+    "repository": "micky387/android_vendor_qcom_opensource_system_bt",
+    "target_path": "vendor/qcom/opensource/commonsys/system/bt",
+    "revision": "android-10"
+  }
 ]
