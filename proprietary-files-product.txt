@@ -51,7 +51,7 @@ product/etc/permissions/UimGbaManager.xml
 -product/framework/uimlpalibrary.jar
 -product/framework/uimservicelibrary.jar
 # Smali edit: https://gist.github.com/luca020400/7a6b05494c32d09c4e56e9285a2a5e32
--product/framework/qti-telephony-common.jar|e975392b63e446d09407427ff934959047d5b16a
+-product/framework/qti-telephony-common.jar|9c5a558ca703de0c709348689a1ffb2dbe76518f
 -product/framework/vendor.qti.hardware.data.dynamicdds-V1.0-java.jar
 -product/framework/vendor.qti.data.factory-V1.0-java.jar
 -product/framework/vendor.qti.data.factory-V2.0-java.jar
@@ -92,7 +92,7 @@ product/lib64/vendor.qti.voiceprint@1.0.so
 
 # IMS
 # Smali edit: https://gist.github.com/luca020400/b0152c9b77e55f50eee0513cf666f61c
--product/priv-app/ims/ims.apk|ad21ae18bdfbd21c7020efeb8fa34b5800f4af08
+-product/priv-app/ims/ims.apk|6c8a6d9f0134bbdddbb3de17b43b2eb416963781
 -product/framework/com.qualcomm.qti.imscmservice-V2.0-java.jar
 -product/framework/com.qualcomm.qti.imscmservice-V2.1-java.jar
 -product/framework/com.qualcomm.qti.imscmservice-V2.2-java.jar
