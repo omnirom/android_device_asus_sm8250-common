@@ -439,4 +439,8 @@
     <!-- Is the device capable of hot swapping an ICC Card -->
     <bool name="config_hotswapCapable">true</bool>
 
+    <string-array name="config_deviceDisabledComponents" translatable="false">
+        <item>com.qti.slaservice/com.qti.slaservice.SLAService</item>
+        <item>com.qti.slaservice/com.qti.slaservice.SLABootReceiver</item>
+    </string-array>
 </resources>
