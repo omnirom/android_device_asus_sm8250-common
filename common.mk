@@ -58,6 +58,10 @@ PRODUCT_PACKAGES += \
 # vendor and odm and we also dont want to AB update them
 TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
 
+# Audio
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/audio/codec2.vendor.base.policy:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/seccomp_policy/codec2.vendor.base.policy
+
 # ANT+
 PRODUCT_PACKAGES += \
     AntHalService
