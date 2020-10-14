@@ -64,6 +64,8 @@
 
     <string name="doze_category_title">Ambient display</string>
     <string name="doze_category_summary">Wake screen when you receive notifications</string>
+    <string name="wake_on_gesture_title">Wake up on gestures</string>
+    <string name="wake_on_gesture_summary">Wake the device instead of pulsing notifications on gesture events</string>
     <string name="wave_check_summary">Pulse notifications on hand wave</string>
     <string name="wave_check_title">Hand wave</string>
     <string name="tilt_check_summary">Pulse notifications when device is picked up</string>
