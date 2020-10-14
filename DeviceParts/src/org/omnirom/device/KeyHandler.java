@@ -150,6 +150,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean mUseTiltCheck;
     private long mProxySensorTimestamp;
     private boolean mUseWaveCheck;
+    private boolean mWakeOnGestureSwitch;
     private Sensor mPocketSensor;
     private boolean mUsePocketCheck;
     private boolean mDispOn;
@@ -623,9 +624,15 @@ public class KeyHandler implements DeviceKeyHandler {
     }
 
     private void launchDozePulse() {
-        if (DEBUG) Log.i(TAG, "Doze pulse");
-        mContext.sendBroadcastAsUser(new Intent(DOZE_INTENT),
+        if (mWakeOnGestureSwitch) {
+            if (DEBUG) Log.i(TAG, "Wake up display");
+            mPowerManager.wakeUp(SystemClock.uptimeMillis(),
+                        PowerManager.WAKE_REASON_GESTURE, TAG);
+        } else {
+            if (DEBUG) Log.i(TAG, "Launch doze pulse");
+            mContext.sendBroadcastAsUser(new Intent(DOZE_INTENT),
                 new UserHandle(UserHandle.USER_CURRENT));
+        }
     }
 
     private boolean enableProxiSensor() {
@@ -642,6 +649,14 @@ public class KeyHandler implements DeviceKeyHandler {
             mUseWaveCheck = Boolean.valueOf(parts[0]);
             mUsePocketCheck = Boolean.valueOf(parts[1]);
             mUseTiltCheck = Boolean.valueOf(parts[2]);
+        }
+
+        String value2 = Settings.System.getStringForUser(mContext.getContentResolver(),
+                    DozeSettings.KEY_WAKE_ON_DATA,
+                    UserHandle.USER_CURRENT);
+        if (DEBUG) Log.i(TAG, "Doze settings wake on gesture = " + value2);
+        if (!TextUtils.isEmpty(value)) {
+            mWakeOnGestureSwitch = Boolean.valueOf(value2);
         }
     }
 

@@ -41,10 +41,14 @@ import org.omnirom.omnilib.utils.OmniSettings;
 
 public class DozeSettings extends PreferenceFragmentCompat {
 
+    private static final String KEY_WAKE_ON_GESTURE = "wake_on_gesture";
     private static final String KEY_WAVE_CHECK = "wave_check";
     private static final String KEY_POCKET_CHECK = "pocket_check";
     private static final String KEY_TILT_CHECK = "tilt_check";
 
+    protected static final String KEY_WAKE_ON_DATA = "wake_on_gesture";
+
+    private boolean mWakeOnGestureSwitch;
     private boolean mUseTiltCheck;
     private boolean mUseWaveCheck;
     private boolean mUsePocketCheck;
@@ -55,6 +59,16 @@ public class DozeSettings extends PreferenceFragmentCompat {
 
         getDozeSettings();
 
+        TwoStatePreference wakeOnGestureSwitch = (TwoStatePreference) findPreference(KEY_WAKE_ON_GESTURE);
+        wakeOnGestureSwitch.setChecked(mWakeOnGestureSwitch);
+        wakeOnGestureSwitch.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                mWakeOnGestureSwitch = (Boolean) newValue;
+                setDozeSettings();
+                return true;
+            }
+        });
         TwoStatePreference waveSwitch = (TwoStatePreference) findPreference(KEY_WAVE_CHECK);
         waveSwitch.setChecked(mUseWaveCheck);
         waveSwitch.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -96,10 +110,19 @@ public class DozeSettings extends PreferenceFragmentCompat {
             mUsePocketCheck = Boolean.valueOf(parts[1]);
             mUseTiltCheck = Boolean.valueOf(parts[2]);
         }
+
+        String value2 = Settings.System.getString(getContext().getContentResolver(),
+                    KEY_WAKE_ON_DATA);
+        if (!TextUtils.isEmpty(value)) {
+            mWakeOnGestureSwitch = Boolean.valueOf(value2);
+        }
     }
 
     private void setDozeSettings() {
         String newValue = String.valueOf(mUseWaveCheck) + ":" + String.valueOf(mUsePocketCheck) + ":" + String.valueOf(mUseTiltCheck);
         Settings.System.putString(getContext().getContentResolver(), OmniSettings.OMNI_DEVICE_FEATURE_SETTINGS, newValue);
+
+        String newValue2 = String.valueOf(mWakeOnGestureSwitch);
+        Settings.System.putString(getContext().getContentResolver(), KEY_WAKE_ON_DATA, newValue2);
     }
 }
