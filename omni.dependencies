@@ -3,13 +3,13 @@
     "remote": "omnirom",
     "repository": "android_device_qcom_caf-sepolicy",
     "target_path": "device/qcom/sepolicy",
-    "revision": "android-10"
+    "revision": "android-11"
   },
   {
     "remote": "omnirom",
     "repository": "android_kernel_asus_sm8250",
     "target_path": "kernel/asus/sm8250",
-    "revision": "android-10"
+    "revision": "android-11"
   },
   {
      "remote": "omnirom",
