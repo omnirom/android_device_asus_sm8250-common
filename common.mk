@@ -20,7 +20,6 @@
 # product configuration (apps).
 #
 $(call inherit-product, vendor/asus/sm8250-common/sm8250-common-vendor.mk)
-$(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
