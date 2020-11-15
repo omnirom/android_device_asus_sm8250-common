@@ -84,6 +84,9 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
 
+# Camera
+PRODUCT_PACKAGES += SnapdragonCamera2
+
 # Charger images
 PRODUCT_PACKAGES += \
     omni_charger_res_images \
@@ -143,10 +146,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     vndk_package
-
-# Remove unwanted packages
-PRODUCT_PACKAGES += \
-    RemovePackages
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
