@@ -7,7 +7,10 @@ allow init sysfs_touchscreen:file { rw_file_perms setattr };
 allow init { system_file vendor_file }:file mounton;
 
 # Allow init to mount vendor configs
+allow init vendor_configs_file:file mounton;
 allow init vendor_configs_file:dir mounton;
+allow init vendor_overlay_file:file mounton;
+allow init vendor_overlay_file:dir mounton;
 
 # Vendor init
 allow init property_socket:sock_file write;
