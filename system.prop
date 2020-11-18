@@ -198,3 +198,4 @@ vendor.iop.enable_uxe=0
 ro.vendor.build.asus.sku=WW
 ro.vendor.qti.va_aosp.support=1
 persist.sys.fflag.override.settings_network_and_internet_v2=true
+sys.vendor.qti.servicetracker.disable=true
