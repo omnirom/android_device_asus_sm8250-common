@@ -162,8 +162,12 @@ persist.vendor.radio.atfwd.start=true
 ro.kernel.qemu.gles=0
 qemu.hw.mainkeys=0
 
+#Whitelisting the below packages
+persist.vendor.camera.privapp.list=com.asus.camera,com.GoogleCamera.Wichaya
+persist.camera.privapp.list=com.asus.camera,com.GoogleCamera.Wichaya
+
 #Expose aux camera for below packages
-vendor.camera.aux.packagelist=org.omnirom.snap,com.asus.snapcam,com.asus.camera
+vendor.camera.aux.packagelist=org.omnirom.snap,com.GoogleCamera.Wichaya,com.asus.camera
 
 #enable IZat OptInApp overlay
 persist.vendor.overlay.izat.optin=rro
