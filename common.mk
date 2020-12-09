@@ -112,10 +112,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fastbootd
 
-# Frameworks
-PRODUCT_PACKAGES += \
-    FrameworksResOverlay
-
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     LiveWallpapers \
