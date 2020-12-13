@@ -47,6 +47,12 @@
   },
   {
     "remote": "omnirom",
+    "repository": "android_vendor_qcom_opensource_commonsys",
+    "target_path": "vendor/qcom/opensource/commonsys",
+    "revision": "android-10"
+  },
+  {
+    "remote": "omnirom",
     "repository": "android_vendor_qcom_opensource_fm-commonsys",
     "target_path": "vendor/qcom/opensource/fm-commonsys",
     "revision": "android-10"
