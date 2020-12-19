@@ -86,7 +86,7 @@ public class GestureSettings extends PreferenceFragment implements
     private AppSelectListPreference mLetterZGesture;
 
     public static final String MUSIC_PATH = "/proc/driver/gesture_type";
-    private static final String SWIPEUP_PATH = "/sys/devices/platform/goodix_ts.0/gesture/swipeup";
+    private static final String SWIPEUP_PATH = "/proc/driver/swipeup";
 
     private List<AppSelectListPreference.PackageItem> mInstalledPackages = new LinkedList<AppSelectListPreference.PackageItem>();
     private PackageManager mPm;
@@ -224,19 +224,19 @@ public class GestureSettings extends PreferenceFragment implements
     public static String getGestureFile(String key) {
         switch(key) {
             case KEY_E_APP:
-                return "/sys/devices/platform/goodix_ts.0/gesture/gesture_e";
+                return "/proc/driver/gesture_e";
             case KEY_M_APP:
-                return "/sys/devices/platform/goodix_ts.0/gesture/gesture_m";
+                return "/proc/driver/gesture_m";
             case KEY_S_APP:
-                return "/sys/devices/platform/goodix_ts.0/gesture/gesture_s";
+                return "/proc/driver/gesture_s";
             case KEY_V_APP:
-                return "/sys/devices/platform/goodix_ts.0/gesture/gesture_v";
+                return "/proc/driver/gesture_v";
             case KEY_W_APP:
-                return "/sys/devices/platform/goodix_ts.0/gesture/gesture_w";
+                return "/proc/driver/gesture_w";
             case KEY_Z_APP:
-                return "/sys/devices/platform/goodix_ts.0/gesture/gesture_z";
+                return "/proc/driver/gesture_z";
             case SWIPEUP_PATH:
-                return "/sys/devices/platform/goodix_ts.0/gesture/swipeup";
+                return "/proc/driver/swipeup";
         }
         return null;
     }

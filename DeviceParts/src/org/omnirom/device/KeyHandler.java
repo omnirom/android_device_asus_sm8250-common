@@ -97,7 +97,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int HANDWAVE_MAX_DELTA_MS = 1000;
     private static final int POCKET_MIN_DELTA_MS = 5000;
 
-    private static final String DT2W_CONTROL_PATH = "/sys/devices/platform/goodix_ts.0/gesture/dclick";
+    private static final String DT2W_CONTROL_PATH = "/proc/driver/dclick";
 
     private static final int[] sSupportedGestures = new int[]{
         KEY_DOUBLE_TAP,
