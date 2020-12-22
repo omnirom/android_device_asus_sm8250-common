@@ -11,8 +11,6 @@ product/lib64/com.qualcomm.qti.ant@1.0.so
 -app/aptxals/aptxals.apk
 etc/permissions/audiosphere.xml
 -framework/audiosphere.jar
-lib/libbluetooth_qti.so
-lib64/libbluetooth_qti.so
 
 # CNE
 etc/cne/Nexus/ATT/ATT_profiles.xml
