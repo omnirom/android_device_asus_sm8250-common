@@ -32,12 +32,6 @@ product/lib64/vendor.qti.hardware.scve.panorama@1.0-adapter-helper.so
 product/lib64/vendor.qti.hardware.scve.panorama@1.0.so
 product/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
 
-# Display api
-product/lib/libsdm-disp-apis.qti.so
-product/lib/vendor.qti.hardware.qdutils_disp@1.0.so
-product/lib64/libsdm-disp-apis.qti.so
-product/lib64/vendor.qti.hardware.qdutils_disp@1.0.so
-
 # QTI Telephony
 -product/app/embms/embms.apk
 -product/app/datastatusnotification/datastatusnotification.apk
@@ -55,7 +49,7 @@ product/etc/permissions/UimGbaManager.xml
 -product/framework/uimlpalibrary.jar
 -product/framework/uimservicelibrary.jar
 # Smali edit: https://gist.github.com/luca020400/7a6b05494c32d09c4e56e9285a2a5e32
--product/framework/qti-telephony-common.jar|9c5a558ca703de0c709348689a1ffb2dbe76518f
+-product/framework/qti-telephony-common.jar|E975392B63E446D09407427FF934959047D5B16A
 -product/framework/vendor.qti.hardware.data.dynamicdds-V1.0-java.jar
 -product/framework/vendor.qti.data.factory-V1.0-java.jar
 -product/framework/vendor.qti.data.factory-V2.0-java.jar
@@ -96,7 +90,7 @@ product/lib64/vendor.qti.voiceprint@1.0.so
 
 # IMS
 # Smali edit: https://gist.github.com/luca020400/b0152c9b77e55f50eee0513cf666f61c
--product/priv-app/ims/ims.apk|6c8a6d9f0134bbdddbb3de17b43b2eb416963781
+-product/priv-app/ims/ims.apk|AD21AE18BDFBD21C7020EFEB8FA34B5800F4AF08
 -product/framework/com.qualcomm.qti.imscmservice-V2.0-java.jar
 -product/framework/com.qualcomm.qti.imscmservice-V2.1-java.jar
 -product/framework/com.qualcomm.qti.imscmservice-V2.2-java.jar
