@@ -81,6 +81,7 @@
     <string name="gaming_title">Game Category</string>
     <string name="gaming_browse_summary">Launch game genie settings</string>
     <string name="asus_advanced_settings_gripsensor">AirTriggers</string>
+    <string name="gamegenie_lock_mode_toast">Please launch Game Genie to turn off Lock mode</string>
     <string name="grip_category_title">Launch AirTriggers</string>
     <string name="grip_category_summary">Settings of your Grip Sensor</string>
     <string name="category_battery">Battery</string>
