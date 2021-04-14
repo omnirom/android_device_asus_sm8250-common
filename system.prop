@@ -35,9 +35,9 @@ media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 mmp.enable.3g2=true
 media.aac_51_output_enabled=true
 mm.enable.smoothstreaming=true
-#13631487 is decimal sum of supported codecs in AAL
-#codecs:(PARSER_)AAC AC3 AMR_NB AMR_WB ASF AVI DTS FLV 3GP 3G2 MKV MP2PS MP2TS MP3 OGG QCP WAV FLAC AIFF APE DSD MHAS
-vendor.mm.enable.qcom_parser=80740350
+#16777215 is decimal sum of supported codecs in AAL
+#codecs:(PARSER_)AAC AC3 AMR_NB AMR_WB ASF AVI DTS FLV 3GP 3G2 MKV MP2PS MP2TS MP3 OGG QCP WAV FLAC AIFF APE DSD MOV MHAS
+vendor.mm.enable.qcom_parser=12582911
 persist.mm.enable.prefetch=true
 
 #Netflix custom property
@@ -74,6 +74,7 @@ persist.fuse_sdcard=true
 #System props for BT
 ro.bluetooth.library_name=libbluetooth_qti.so
 persist.vendor.btstack.aac_frm_ctl.enabled=true
+persist.vendor.service.bt.iotinfo.report.enable=true
 persist.vendor.btstack.enable.twsplus=true
 persist.vendor.btstack.enable.twsplussho=true
 persist.bluetooth.avrcpversion=avrcp16
@@ -82,31 +83,6 @@ persist.bluetooth.avrcpversion=avrcp16
 persist.vendor.qcom.bluetooth.enable.swb=false
 persist.vendor.qcom.bluetooth.enable.swbpm=false
 
-# ASUS_BSP "Enable IOT logging"+++
-persist.vendor.service.bt.iotinfo.report.enable=true
-# ASUS_BSP "Enable IOT logging"---
-
-#
-#snapdragon value add features
-#
-ro.qc.sdk.audio.ssr=false
-
-##fluencetype can be "fluence" or "fluencepro" or "none"
-ro.qc.sdk.audio.fluencetype=none
-persist.audio.fluence.voicecall=true
-persist.audio.fluence.voicerec=false
-persist.audio.fluence.speaker=true
-
-
-#enable offload audio video playback by default
-audio.offload.video=true
-#
-##enable music through deep buffer
-audio.deep_buffer.media=true
-#
-##set AudioFlinger client heap size
-ro.af.client_heap_size_kbyte=7168
-#
 #system prop for RmNet Data
 persist.rmnet.data.enable=true
 persist.data.wda.enable=true
@@ -128,25 +104,16 @@ persist.sys.wfd.virtual=0
 debug.sf.enable_hwc_vds=1
 
 #property to latch unsignaled buffer
-#debug.sf.latch_unsignaled=1
+debug.sf.latch_unsignaled=1
 
 # enable tunnel encoding for amrwb
 tunnel.audio.encode = true
-
-#Buffer size in kbytes for compress offload playback
-audio.offload.buffer.size.kb=32
-
-#Enable offload audio video playback by default
-av.offload.enable=true
 
 #enable voice path for PCM VoIP by default
 use.voice.path.for.pcm.voip=true
 
 # system prop for NFC DT
 ro.nfc.port=I2C
-
-#enable dsp gapless mode by default
-audio.offload.gapless.enabled=true
 
 #initialize QCA1530 detection
 sys.qca1530=detect
@@ -175,10 +142,13 @@ persist.backup.ntpServer="0.pool.ntp.org"
 persist.vendor.sensors.enable.mag_filter=true
 
 #Partition source order for Product/Build properties pickup.
-#ro.product.property_source_order=odm,vendor,product,product_services,system
+#ro.product.property_source_order=odm,vendor,product,system_ext,system
 
 #Property to enable Codec2 for audio and OMX for Video
 debug.stagefright.ccodec=1
+
+#Property to set native recorder's maximum base layer fps
+ro.media.recorder-max-base-layer-fps = 60
 
 #Property to enable logcat service
 ro.logd.kernel=1
@@ -192,10 +162,13 @@ persist.vendor.sys.downloadmode.enable=0
 # [ASUS BSP] for Poweroff Alarm Support
 ro.vendor.asus.poweroffalarm_support=1
 
-vendor.iop.enable_uxe=0
+#Battery Property
+ro.charger.enable_suspend = 1
+
+ro.gfx.driver.0=com.asus.gpudrivers.kona.api30
+ro.gfx.driver.1=com.qualcomm.qti.gpudrivers.kona.api30
 # end of device/qcom/qssi/system.prop
 
 ro.vendor.build.asus.sku=WW
 ro.vendor.qti.va_aosp.support=1
-persist.sys.fflag.override.settings_network_and_internet_v2=true
 sys.vendor.qti.servicetracker.disable=true
