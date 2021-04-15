@@ -44,6 +44,28 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="frame_mode_main"
+        android:title="@string/category_frame_rate">
+        <ListPreference
+            android:key="frame_mode_key"
+            android:title="@string/refresh_rate_title"
+            android:entries="@array/frame_rate_entries"
+            android:entryValues="@array/frame_rate_values"
+            android:persistent="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="frame_mode_main_zf7"
+        android:title="@string/category_frame_rate">
+        <ListPreference
+            android:key="frame_mode_key_zf7"
+            android:title="@string/refresh_rate_title"
+            android:entries="@array/frame_rate_zf7_entries"
+            android:entryValues="@array/frame_rate_zf7_values"
+            android:persistent="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="screen"
         android:title="@string/screen_title">
         <SwitchPreference
