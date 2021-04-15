@@ -29,11 +29,13 @@ import android.os.IBinder;
 import android.os.Parcel;
 import android.os.RemoteException;
 import android.os.ServiceManager;
+import android.os.UserHandle;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 import androidx.preference.TwoStatePreference;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -51,6 +53,7 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_SETTINGS_PREFIX = "device_setting_";
     public static final String KEY_GLOVE_SWITCH = "glove";
 
+    private static final String KEY_CATEGORY_GAMING = "category_gaming";
     private static final String KEY_CATEGORY_SCREEN = "screen";
     public static final String KEY_GAME_GENIE = "game_toolbar_app";
     private static final String KEY_FRAME_MODE = "frame_mode_key";
@@ -60,8 +63,19 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String FPS = "fps";
 
     protected static final String DEFAULT_FPS_VALUE = "60";
+    private static final String ACTION_AIR_TRIGGER_OFF = "com.asus.airtriggers.SYSTEMUI_AIR_TRIGGER_OFF";
+    private static final String ACTION_AIR_TRIGGER_ON = "com.asus.airtriggers.SYSTEMUI_AIR_TRIGGER_ON";
+    private static final String AIRTRIGGER_PACKAGE_NAME = "com.asus.airtriggers";
+    private static final String FIELD_AIR_TRIGGER_ENABLE = "air_trigger_enable";
+    public static final String KEY_AIRTRIGGER = "grip_sensor_apk";
+    public static final String KEY_AIRTRIGGER_PREF = "grip_sensor_pref";
+    private static final String TAG = "AirTriggerApkPreferenceController";
+
+    private Airtrigger mAirtrigger;
+    private static Preference mAirtriggerPref;
     private static ListPreference mFrameModeRate;
     private static ListPreference mFrameModeRateZF7;
+    private static SwitchPreference mGripSensorPreference;
     private static TwoStatePreference mGloveModeSwitch;
     private static Preference mGameGenie;
 
@@ -81,6 +95,8 @@ public class DeviceSettings extends PreferenceFragment implements
                 (PreferenceCategory) prefScreen.findPreference(KEY_FRAME_CATEGORY);
         final PreferenceCategory fpsCategoryzf7 =
                 (PreferenceCategory) prefScreen.findPreference(KEY_FRAME_CATEGORY_ZF7);
+        final PreferenceCategory GamingCategory =
+                (PreferenceCategory) prefScreen.findPreference(KEY_CATEGORY_GAMING);
 
         mFrameModeRate = (ListPreference) findPreference(KEY_FRAME_MODE);
         int framevalue = Settings.System.getInt(getContext().getContentResolver(),
@@ -110,10 +126,24 @@ public class DeviceSettings extends PreferenceFragment implements
         mGameGenie = findPreference(KEY_GAME_GENIE);
         mGameGenie.setEnabled(GameGenie.isGameGenieExist(this.getContext()));
 
+        mAirtriggerPref = findPreference(KEY_AIRTRIGGER_PREF);
+        mAirtriggerPref.setOnPreferenceChangeListener(this);
+        if (!isRog3) {
+            prefScreen.removePreference(GamingCategory);
+        }
+
+        mGripSensorPreference = (SwitchPreference) findPreference(KEY_AIRTRIGGER);
+        mGripSensorPreference.setChecked(Settings.Global.getInt(getContext().getContentResolver(),
+        FIELD_AIR_TRIGGER_ENABLE, 0) == 1);
+        mGripSensorPreference.setOnPreferenceChangeListener(this);
+
     }
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
+        if (preference == mAirtriggerPref) {
+            mAirtrigger.startAirTriggerSettings(this.getContext());
+        }
         return super.onPreferenceTreeClick(preference);
     }
 
@@ -132,6 +162,9 @@ public class DeviceSettings extends PreferenceFragment implements
             mFrameModeRateZF7.setSummary(mFrameModeRateZF7.getEntries()[index]);
             changeFps(getContext(), value);
             Settings.System.putInt(getContext().getContentResolver(), FPS, value);
+        }
+        if (preference == mGripSensorPreference) {
+            notifySwitchState(((Boolean) newValue).booleanValue());
         }
         return true;
     }
@@ -160,5 +193,13 @@ public class DeviceSettings extends PreferenceFragment implements
                // intentional no-op
         }
             Settings.System.putInt(context.getContentResolver(), DeviceSettings.FPS, fps);
+    }
+
+    private void notifySwitchState(boolean z) {
+        Log.d(TAG, "notifySwitchState enabled=" + z);
+        Intent intent = new Intent();
+        intent.setAction(z ? ACTION_AIR_TRIGGER_ON : ACTION_AIR_TRIGGER_OFF);
+        intent.setPackage(AIRTRIGGER_PACKAGE_NAME);
+        getContext().sendBroadcastAsUser(intent, UserHandle.CURRENT);
     }
 }
