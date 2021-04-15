@@ -135,5 +135,15 @@ public class Startup extends BroadcastReceiver {
         if (enabled) {
              Utils.writeLine(GestureSettings.MUSIC_PATH, "10000001");
         }
+
+        value = Settings.System.getString(context.getContentResolver(), DeviceSettings.FPS);
+        if (TextUtils.isEmpty(value)) {
+            value = DeviceSettings.DEFAULT_FPS_VALUE;
+            Settings.System.putString(context.getContentResolver(), DeviceSettings.FPS, value);
+            DeviceSettings.changeFps(context, Integer.valueOf(value));
+        } else {
+        Settings.System.putString(context.getContentResolver(), DeviceSettings.FPS, value);
+        DeviceSettings.changeFps(context, Integer.valueOf(value));
+        }
     }
 }
