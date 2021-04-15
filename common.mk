@@ -111,6 +111,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fastbootd
 
+# HIDL
+PRODUCT_PACKAGES += \
+    libhidltransport \
+    libhwbinder
+
+PRODUCT_BOOT_JARS += android.hidl.manager-V1.0-java
+
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     LiveWallpapers \
@@ -176,8 +183,12 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# WiFi Display
+# Wifi Display
 PRODUCT_PACKAGES += \
-    libnl
+    libavservices_minijail \
+    libnl \
+
+PRODUCT_BOOT_JARS += \
+    WfdCommon
 
 include vendor/qcom/opensource/display-commonsys-intf/config/display-product-system.mk
