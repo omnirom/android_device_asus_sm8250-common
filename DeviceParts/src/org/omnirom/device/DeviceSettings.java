@@ -53,6 +53,7 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_SETTINGS_PREFIX = "device_setting_";
     public static final String KEY_GLOVE_SWITCH = "glove";
 
+    private static final String KEY_CATEGORY_BATTERY = "category_battery";
     private static final String KEY_CATEGORY_GAMING = "category_gaming";
     private static final String KEY_CATEGORY_SCREEN = "screen";
     public static final String KEY_GAME_GENIE = "game_toolbar_app";
@@ -97,6 +98,8 @@ public class DeviceSettings extends PreferenceFragment implements
                 (PreferenceCategory) prefScreen.findPreference(KEY_FRAME_CATEGORY_ZF7);
         final PreferenceCategory GamingCategory =
                 (PreferenceCategory) prefScreen.findPreference(KEY_CATEGORY_GAMING);
+         final PreferenceCategory BatteryCategory =
+                (PreferenceCategory) prefScreen.findPreference(KEY_CATEGORY_BATTERY);
 
         mFrameModeRate = (ListPreference) findPreference(KEY_FRAME_MODE);
         int framevalue = Settings.System.getInt(getContext().getContentResolver(),
@@ -116,6 +119,7 @@ public class DeviceSettings extends PreferenceFragment implements
             prefScreen.removePreference(fpsCategoryzf7);
         } else {
             prefScreen.removePreference(fpsCategory);
+            prefScreen.removePreference(BatteryCategory);
         }
 
         mGloveModeSwitch = (TwoStatePreference) findPreference(KEY_GLOVE_SWITCH);
