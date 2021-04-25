@@ -8,7 +8,7 @@ type persist_file, file_type;
 type xrom_file, file_type;
 
 # Files in userdata
-type qmipriod_data_file, file_type, data_file_type;
+type vendor_qmipriod_data_file, file_type, data_file_type;
 
 # Offscreen Gestures
 type sysfs_gesture, sysfs_type, fs_type;
