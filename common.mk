@@ -130,7 +130,8 @@ PRODUCT_PACKAGES += \
 # Prebuilt
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/asus/sm8250-common/prebuilt/product,product) \
-    $(call find-copy-subdir-files,*,device/asus/sm8250-common/prebuilt/system,system)
+    $(call find-copy-subdir-files,*,device/asus/sm8250-common/prebuilt/system,system) \
+    $(call find-copy-subdir-files,*,device/asus/sm8250-common/prebuilt/system_ext,system_ext)
 
 # Properties
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
