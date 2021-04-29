@@ -25,8 +25,7 @@ system_ext/etc/permissions/UimGbaManager.xml
 -system_ext/framework/uimgbalibrary.jar
 -system_ext/framework/uimgbamanagerlibrary.jar
 # ROG 5
-# https://git.rip/dumps/redmi/curtana/-/blob/qssi-user-11-RKQ1.200826.002-V12.0.1.0.RJWINXM-release-keys/system_ext/framework/qti-telephony-common.jar
--system_ext/framework/qti-telephony-common.jar|C4D8A8B797EBCC7C73384CE3A10BA9E94FB1B460
+-system_ext/framework/qti-telephony-common.jar|07B2B91F5D547C5B5E0752F0F5534321BC93A2C1
 -system_ext/framework/vendor.qti.hardware.data.connection-V1.0-java.jar
 -system_ext/framework/vendor.qti.hardware.data.connection-V1.1-java.jar
 -system_ext/framework/vendor.qti.hardware.data.dynamicdds-V1.0-java.jar
