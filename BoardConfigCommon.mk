@@ -173,6 +173,7 @@ include vendor/omni/sepolicy/sepolicy.mk
 include device/qcom/sepolicy/SEPolicy.mk
 
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
+PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/product/private
 
 # Treble
 BOARD_VNDK_VERSION := current
