@@ -72,6 +72,9 @@
     <string name="wake_entry">Prebudenie</string>
     <string name="swipe_up_to_wake_up_title">Potiahnutím nahor prebudiť</string>
     <string name="swipe_up_to_wake_up_summary">Potiahnite prstom po obrazovke nahor pre prebudenie zariadenia z režimu nečinnosti</string>
+    <string name="category_frame_rate">FPS obrazovky</string>
+    <string name="refresh_rate_title">Obnovovacia frekvencia</string>
+    <string name="summary_placeholder"></string>
     <string name="gaming_title">Herný režim</string>
     <string name="gaming_browse_summary">Nastavenie hry v Hernom režime</string>
     <!-- Volume panel QS tile -->

@@ -14,5 +14,6 @@
      limitations under the License.
 -->
 <resources>
+    <string name="summary_placeholder"></string>
     <!-- Volume panel QS tile -->
 </resources>
