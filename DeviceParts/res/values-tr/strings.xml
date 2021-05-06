@@ -72,6 +72,9 @@
     <string name="wake_entry">Uyanma</string>
     <string name="swipe_up_to_wake_up_title">Uyandırmak için yukarıya kaydırın</string>
     <string name="swipe_up_to_wake_up_summary">Cihazınızı bekleme modundan çıkarmak için ekran üzerinde yukarıya doğru kaydırın</string>
+    <string name="category_frame_rate">Ekran FPS\'si</string>
+    <string name="refresh_rate_title">Yenileme oranı</string>
+    <string name="summary_placeholder"></string>
     <string name="gaming_title">Oyun Cini</string>
     <string name="gaming_browse_summary">Oyun cini ayarlarını açar</string>
     <!-- Volume panel QS tile -->
