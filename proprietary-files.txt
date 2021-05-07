@@ -8,6 +8,7 @@ system_ext/etc/permissions/audiosphere.xml
 -system_ext/framework/audiosphere.jar
 
 # CNE
+-system_ext/framework/com.quicinc.cne.api-V1.0-java.jar
 -system_ext/framework/com.quicinc.cne.api-V1.1-java.jar
 -system_ext/framework/com.quicinc.cne.constants-V1.0-java.jar
 -system_ext/framework/com.quicinc.cne.constants-V2.0-java.jar
