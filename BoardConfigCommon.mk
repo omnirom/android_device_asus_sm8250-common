@@ -177,6 +177,3 @@ PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/product/private
 
 # Treble
 BOARD_VNDK_VERSION := current
-
-# Inherit from the proprietary version
--include vendor/asus/sm8250-common/BoardConfigVendor.mk
