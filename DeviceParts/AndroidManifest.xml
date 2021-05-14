@@ -99,6 +99,16 @@
                     android:name="android.service.quicksettings.action.QS_TILE"/>
             </intent-filter>
         </service>
+        <service
+            android:name="org.omnirom.device.GameGenieTile"
+            android:icon="@drawable/asus_navigationbar_ic_game_genie"
+            android:label="@string/game_genie"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action
+                    android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
         <service android:name="org.omnirom.device.GripSensorServiceMain"
                  android:permission="AsusGripSensorHelperService">
         </service>

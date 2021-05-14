@@ -78,6 +78,7 @@
     <string name="refresh_rate_title">Refresh rate</string>
     <string name="summary_placeholder"> </string>
 
+    <string name="game_genie">Game Genie</string>
     <string name="gaming_title">Game Category</string>
     <string name="gaming_browse_summary">Launch game genie settings</string>
     <string name="asus_advanced_settings_gripsensor">AirTriggers</string>
