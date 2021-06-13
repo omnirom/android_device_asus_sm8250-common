@@ -106,6 +106,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     fastbootd
 
+# FM
+PRODUCT_PACKAGES += \
+    FM2 \
+    libqcomfm_jni \
+    qcom.fmradio
+
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
