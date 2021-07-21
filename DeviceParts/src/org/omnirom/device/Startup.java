@@ -147,7 +147,6 @@ public class Startup extends BroadcastReceiver {
             Settings.System.putString(context.getContentResolver(), DeviceSettings.FPS, value);
             DeviceSettings.changeFps(context, Integer.valueOf(value));
         } else {
-        Settings.System.putString(context.getContentResolver(), DeviceSettings.FPS, value);
         DeviceSettings.changeFps(context, Integer.valueOf(value));
         }
 
