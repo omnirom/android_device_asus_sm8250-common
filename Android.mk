@@ -42,4 +42,15 @@ $(IMS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS)
 
+include $(CLEAR_VARS)
+SYSHELPER_LIBS := libsystemhelper_jni.so
+SYSHELPER_SYMLINKS := $(addprefix $(TARGET_OUT_SYSTEM_EXT_APPS)/com.qualcomm.qti.services.systemhelper/lib/arm64/,$(notdir $(SYSHELPER_LIBS)))
+$(SYSHELPER_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "System Helper lib link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /system_ext/lib64/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(SYSHELPER_SYMLINKS)
+
 endif
