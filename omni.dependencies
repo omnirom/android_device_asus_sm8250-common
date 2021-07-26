@@ -6,12 +6,6 @@
     "revision": "android-11"
   },
   {
-    "remote": "omnirom",
-    "repository": "android_kernel_asus_sm8250",
-    "target_path": "kernel/asus/sm8250",
-    "revision": "android-11"
-  },
-  {
      "remote": "omnirom",
      "repository": "android_vendor_qcom_opensource_fm-commonsys",
      "target_path": "vendor/qcom/opensource/fm-commonsys",
