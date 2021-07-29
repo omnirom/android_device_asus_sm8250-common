@@ -20,6 +20,7 @@ package org.omnirom.device;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import androidx.preference.PreferenceManager;
 import android.provider.Settings;
@@ -27,6 +28,7 @@ import android.text.TextUtils;
 
 public class Startup extends BroadcastReceiver {
     private static final String ASUS_GAMEMODE = "asus_gamemode";
+    private static final String BROADCAST_ACTION_LAUNCH_PANEL = "com.asus.gamewidget.action.SHOW_WIDGET_BTN";
 
     private static void restore(String file, boolean enabled) {
         if (file == null) {
@@ -63,6 +65,7 @@ public class Startup extends BroadcastReceiver {
         restoreAfterUserSwitch(context);
         if (DeviceSettings.isRog3) {
             context.startService(new Intent(context, GripSensorServiceMain.class));
+            context.registerReceiver((this), new IntentFilter(BROADCAST_ACTION_LAUNCH_PANEL), "com.asus.systemui.permission.GAME_GENIE", null);
         }
     }
 
