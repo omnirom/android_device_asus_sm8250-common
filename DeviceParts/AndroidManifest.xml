@@ -10,6 +10,9 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="com.asus.focusapplistener.permission.GAME_GENIE_PROVIDER"/>
     <uses-permission android:name="com.asus.hardwarestub.permission.FPS_CENTRAL_CONTROL_SERVICE"/>
+    <protected-broadcast android:name="com.asus.gamewidget.action.WIDGET_BTN_CLICKED"/>
+    <uses-permission android:name="com.asus.gamewidget.permission.GAME_GENIE_SERVICE"/>
+    <permission android:name="com.asus.systemui.permission.GAME_GENIE" android:protectionLevel="normal|signature|system"/>
 
     <protected-broadcast android:name="com.android.systemui.doze.pulse" />
     <protected-broadcast android:name="com.asus.airtriggers.SYSTEMUI_AIR_TRIGGER_ON" />
@@ -109,6 +112,15 @@
             <intent-filter>
                 <action
                     android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name="org.omnirom.device.GameTile"
+            android:icon="@drawable/game_genie"
+            android:label="@string/game_genie"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
         <service android:name="org.omnirom.device.GripSensorServiceMain"
