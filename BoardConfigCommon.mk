@@ -39,7 +39,6 @@ ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := kona
 TARGET_NO_BOOTLOADER := true
 
 # A/B
@@ -159,7 +158,6 @@ BOARD_ROOT_EXTRA_FOLDERS += ADF APD asdf batinfo xrom
 
 # Platform
 QCOM_HARDWARE_VARIANT := sm8250
-TARGET_BOARD_PLATFORM := kona
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno650
 
 # Properties
