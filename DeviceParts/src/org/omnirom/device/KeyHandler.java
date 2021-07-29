@@ -188,6 +188,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean isOPCameraAvail;
     private boolean mRestoreUser;
     private boolean mDoubleTapToWake;
+    private static final String BROADCAST_ACTION_SHOW_WIDGET = "com.asus.gamewidget.action.SHOW_WIDGET_BTN";
 
     private SensorEventListener mProximitySensor = new SensorEventListener() {
         @Override
@@ -294,6 +295,13 @@ public class KeyHandler implements DeviceKeyHandler {
          }
     };
 
+    /*private BroadcastReceiver mGameGenieReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            setDisplayMode(DisplayMode.valueOf(intent.getIntExtra("display_mode", DisplayMode.HIDDEN.getExtraValue())));
+        }
+    };*/
+
     public KeyHandler(Context context) {
         mContext = context;
         mDispOn = true;
@@ -312,6 +320,10 @@ public class KeyHandler implements DeviceKeyHandler {
         systemStateFilter.addAction(Intent.ACTION_SCREEN_OFF);
         systemStateFilter.addAction(Intent.ACTION_USER_SWITCHED);
         mContext.registerReceiver(mSystemStateReceiver, systemStateFilter);
+        //IntentFilter (gameGenieFilter = new IntentFilter(BROADCAST_ACTION_SHOW_WIDGET), "com.asus.systemui.permission.GAME_GENIE", null);
+        //mContext.registerReceiver(mGameGenieReceiver, new IntentFilter(BROADCAST_ACTION_SHOW_WIDGET), "com.asus.systemui.permission.GAME_GENIE", null);
+        //mContext.registerReceiver(mGameGenieReceiver, gameGenieFilter);
+        //DisplayMode displayMode = DisplayMode.HIDDEN;
     }
 
     private class EventHandler extends Handler {
@@ -595,5 +607,45 @@ public class KeyHandler implements DeviceKeyHandler {
 
     IStatusBarService getStatusBarService() {
         return IStatusBarService.Stub.asInterface(ServiceManager.getService("statusbar"));
+    }
+
+    /*public final void setDisplayMode(DisplayMode displayMode) {
+        displayMode = extraValue;
+    }*/
+
+    public enum DisplayMode {
+        HIDDEN(0),
+        SHOWN_ON_DEFAULT_DISPLAY(1),
+        SHOWN_ON_NON_DEFAULT_DISPLAYS(2),
+        SHOWN_ON_ALL_DISPLAYS(3);
+
+        private final int extraValue;
+
+        private DisplayMode(int i) {
+            extraValue = i;
+        }
+
+        public final int getExtraValue() {
+            return this.extraValue;
+        }
+
+            public final static DisplayMode valueOf(int i) {
+                DisplayMode displayMode;
+                DisplayMode[] values = DisplayMode.values();
+                int length = values.length;
+                int i2 = 0;
+                while (true) {
+                    if (i2 >= length) {
+                        displayMode = null;
+                        break;
+                    }
+                    displayMode = values[i2];
+                    if (displayMode.getExtraValue() == i) {
+                        break;
+                    }
+                    i2++;
+                }
+                return displayMode != null ? displayMode : DisplayMode.HIDDEN;
+            }
     }
 }

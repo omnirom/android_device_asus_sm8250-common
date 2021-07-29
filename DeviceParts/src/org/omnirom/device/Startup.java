@@ -20,6 +20,7 @@ package org.omnirom.device;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import androidx.preference.PreferenceManager;
 import android.provider.Settings;
@@ -170,6 +171,8 @@ public class Startup extends BroadcastReceiver {
                 Settings.Global.putString(context.getContentResolver(), "air_trigger_tap_right_threshold_level", "4");
                 Settings.Global.putString(context.getContentResolver(), "air_trigger_tap_threshold_level", "4");
             }
+			Settings.System.putString(context.getContentResolver(), "gamegenie_esports_mode", value);
+			Settings.System.putString(context.getContentResolver(), "pointer_acceleration", "3");
         }
     }
 }
