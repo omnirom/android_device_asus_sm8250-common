@@ -166,6 +166,7 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno650
 
 # Properties
 TARGET_SYSTEM_PROP += $(COMMON_PATH)/system.prop
+TARGET_SYSTEM_EXT_PROP += $(COMMON_PATH)/system_ext.prop
 
 # Recovery
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true

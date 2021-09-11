@@ -1,0 +1,3 @@
+#Expose aux camera for below packages
+vendor.camera.aux.packagelist=org.omnirom.snap,com.googlecamera.wichaya,com.asus.camera
+persist.vendor.camera.privapp.list=com.asus.camera
