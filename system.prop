@@ -161,8 +161,6 @@ ro.vendor.asus.poweroffalarm_support=1
 
 #Battery Property
 ro.charger.enable_suspend = 1
-ro.vendor.smartcharging=1
-ro.vendor.disableaicharging=1
 
 ro.gfx.driver.0=com.asus.gpudrivers.kona.api30
 ro.gfx.driver.1=com.qualcomm.qti.gpudrivers.kona.api30
