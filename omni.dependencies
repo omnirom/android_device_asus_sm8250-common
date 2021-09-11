@@ -22,11 +22,5 @@
     "repository": "android_vendor_qcom_opensource_bluetooth-commonsys-intf",
     "target_path": "vendor/qcom/opensource/commonsys-intf/bluetooth",
     "revision": "android-11"
-  },
-  {
-    "remote": "omnirom",
-    "repository": "android_packages_apps_SnapdragonCamera2",
-    "target_path": "packages/apps/SnapdragonCamera2",
-    "revision": "android-11"
   }
 ]
