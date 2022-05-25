@@ -3,13 +3,13 @@
     "remote": "omnirom",
     "repository": "android_device_qcom_caf-sepolicy",
     "target_path": "device/qcom/sepolicy",
-    "revision": "android-11"
+    "revision": "android-12.0"
   },
   {
      "remote": "omnirom",
      "repository": "android_vendor_qcom_opensource_fm-commonsys",
      "target_path": "vendor/qcom/opensource/fm-commonsys",
-     "revision": "android-11"
+     "revision": "android-12.0"
    },
    {
     "remote": "omnirom",
