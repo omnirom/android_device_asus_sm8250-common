@@ -184,7 +184,7 @@ TARGET_USES_MKE2FS := true
 
 # Sepolicy
 include vendor/omni/sepolicy/sepolicy.mk
-include device/qcom/sepolicy/SEPolicy.mk
+include device/qcom/sepolicy_custom/SEPolicy.mk
 
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
