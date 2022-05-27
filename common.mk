@@ -24,6 +24,13 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     vendor/omni/overlay/CarrierConfig
 
+PRODUCT_PACKAGES += \
+    FrameworksResOverlay \
+    SettingsProviderOverlay \
+    SystemUIOverlay \
+    TetheringOverlay \
+    WifiOverlay
+
 # A/B
 AB_OTA_UPDATER := true
 
@@ -180,9 +187,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # Wifi
 PRODUCT_PACKAGES += \
     libavservices_minijail \
-    libnl \
-    TetheringOverlay \
-    WifiOverlay
+    libnl
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
