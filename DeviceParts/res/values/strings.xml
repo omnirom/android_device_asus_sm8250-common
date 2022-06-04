@@ -83,10 +83,6 @@
     <string name="asus_advanced_settings_gripsensor">AirTriggers</string>
     <string name="grip_category_title">Launch AirTriggers</string>
     <string name="grip_category_summary">Settings of your Grip Sensor</string>
-    <string name="category_battery">Battery</string>
-    <string name="battery_manager">Battery Saver</string>
-    <string name="battery_calibration_title">PowerMaster</string>
-    <string name="battery_calibration_summary">Battery modes, Battery care, Auto-start manager</string>
 
     <!-- Volume panel QS tile -->
     <string name="volume_mode">Sound</string>
