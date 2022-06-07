@@ -112,9 +112,8 @@
             android:title="@string/battery_calibration_title"
             android:summary="@string/battery_calibration_summary"
             android:persistent="false" >
-        <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.asus.powersaver"
-                android:targetClass="com.asus.powersaver.PowerSaverSettings" />
+            <intent android:action="android.intent.action.VIEW"
+                android:data="mobile_manager://battery/SystemModes"/>
         </Preference>
     </PreferenceCategory>
 
