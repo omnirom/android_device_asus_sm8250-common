@@ -112,6 +112,10 @@ PRODUCT_PACKAGES += \
     libhidltransport \
     libhwbinder
 
+# Init
+PRODUCT_PACKAGES += \
+    libinit_sm8250
+
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     LiveWallpapers \
