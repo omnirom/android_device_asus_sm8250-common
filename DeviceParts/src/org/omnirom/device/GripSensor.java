@@ -49,6 +49,14 @@ public class GripSensor {
     private static final int REMOTE_SERVICE_STATE_UNBOUND = 0;
     private static final String REMTOE_SERVICE_PACKAGENAME = "com.asus.focusapplistener";
     private static final String TAG = "GripSensor";
+    private Context mContext;
+    MyGripsensorListener mGripSensorListener;
+    private HandlerThread mHandlerThread;
+    private Object mLock = new Object();
+    private Handler mMainHandler = null;
+    private Messenger mRemoteMsgService = null;
+    private int mServiceState = 0;
+    private WorkerHandler mWorkerHandler = null;
     private ServiceConnection mConnection = new ServiceConnection() {
         public void onServiceConnected(ComponentName className, IBinder service) {
             synchronized (mLock) {
@@ -67,14 +75,6 @@ public class GripSensor {
             }
         }
     };
-    private Context mContext;
-    MyGripsensorListener mGripSensorListener;
-    private HandlerThread mHandlerThread;
-    private Object mLock = new Object();
-    private Handler mMainHandler = null;
-    private Messenger mRemoteMsgService = null;
-    private int mServiceState = 0;
-    private WorkerHandler mWorkerHandler = null;
 
     public GripSensor(Context context) {
         mContext = context;
@@ -98,6 +98,7 @@ public class GripSensor {
             super(l);
         }
 
+        @Override
         public void handleMessage(Message msg) {
             int gripMessengerServiceState;
             switch (msg.what) {
@@ -106,13 +107,6 @@ public class GripSensor {
                     gripSensorService.mGripSensorListener = new MyGripsensorListener((SensorManager) gripSensorService.mContext.getSystemService("sensor"), 65537, true, GripSensor.this.mWorkerHandler, GripSensor.this.mContext);
                     if (GripSensor.this.mGripSensorListener != null) {
                         GripSensor.this.mGripSensorListener.register();
-                    }
-                    try {
-                        if (DeviceSettings.isRog3) {
-                            SystemProperties.set("persist.vendor.asus.hardware.gripsensor", "1");
-                        }
-                    } catch (Exception e) {
-                        Log.w(GripSensor.TAG, e.toString());
                     }
                     sendEmptyMessage(1001);
                     return;
@@ -126,23 +120,23 @@ public class GripSensor {
                         synchronized (GripSensor.this.mLock) {
                             GripSensor.this.doBindServiceLocked();
                         }
-                        sendMessageDelayed(Message.obtain(msg), 1000);
+                        sendMessageDelayed(Message.obtain(msg), 1000L);
                         return;
-                    } else if (gripMessengerServiceState != 1) {
-                        return;
-                    } else {
+                    } else if (gripMessengerServiceState == 1) {
                         if (retryLimitReached(msg.arg1)) {
                             Slog.w(GripSensor.TAG, "Reach max retry times, reset binding state after 30 seconds.");
-                            sendEmptyMessageDelayed(GripSensor.MSG_RESET_BINDINGSTATE, 30000);
+                            sendEmptyMessageDelayed(1002, 30000L);
                             return;
                         }
                         Slog.d(GripSensor.TAG, "Remote service is binding. Send message later.");
                         Message newMessage = Message.obtain(msg);
                         newMessage.arg1++;
-                        sendMessageDelayed(newMessage, 1000);
+                        sendMessageDelayed(newMessage, 1000L);
+                        return;
+                    } else {
                         return;
                     }
-                case GripSensor.MSG_RESET_BINDINGSTATE /*{ENCODED_INT: 1002}*/:
+                case 1002:
                     synchronized (GripSensor.this.mLock) {
                         GripSensor.this.mServiceState = 0;
                         GripSensor.this.mRemoteMsgService = null;
@@ -159,17 +153,21 @@ public class GripSensor {
         }
     }
 
-    /* access modifiers changed from: private */
-    public class WorkerHandler extends Handler {
+    private class WorkerHandler extends Handler {
         public WorkerHandler(Looper l, Context context) {
             super(l);
         }
 
+        @Override
         public void handleMessage(Message msg) {
-            if (msg.what == 2000) {
-                synchronized (GripSensor.this.mLock) {
-                    GripSensor.this.updateSensorEventToRemoteLocked(msg.getData());
-                }
+            switch (msg.what) {
+                case MSG_UPDATE_SENSOR_ON_CHANGED:
+                    synchronized (GripSensor.this.mLock) {
+                        GripSensor.this.updateSensorEventToRemoteLocked(msg.getData());
+                    }
+                    return;
+                default:
+                    return;
             }
         }
     }
@@ -179,7 +177,7 @@ public class GripSensor {
             super(sensorManager, type, wakeUp, handler, context);
         }
 
-        @Override // com.android.server.policy.GripsensorListener
+        @Override
         public void onSensorChanged(SensorEvent event) {
             int length = event.values.length;
             Sensor sensor = event.sensor;
@@ -190,9 +188,10 @@ public class GripSensor {
                     Slog.d(GripSensor.TAG, "GRIP array:  \nGesture_TYPE[0]: " + event.values[0] + " \nTRK_ID[1]: " + event.values[1] + " \nBAR_ID[2]: " + event.values[2] + " \nPRESSURE[3]: " + event.values[3] + " \nFRAME[4]: " + event.values[4] + " \nCenter[5]: " + event.values[5] + "\nLENGTH[6]: " + event.values[6]);
                 }
                 acquireWakelock((int) event.values[0]);
-                Message msg = this.mHandler.obtainMessage(GripSensor.MSG_UPDATE_SENSOR_ON_CHANGED);
+                float[] rawData = (float[]) event.values.clone();
+                Message msg = this.mHandler.obtainMessage(MSG_UPDATE_SENSOR_ON_CHANGED);
                 Bundle data = new Bundle();
-                data.putFloatArray("data", (float[]) event.values.clone());
+                data.putFloatArray("data", rawData);
                 msg.setData(data);
                 this.mHandler.sendMessage(msg);
             }
@@ -216,7 +215,8 @@ public class GripSensor {
         if (this.mRemoteMsgService != null) {
             Message msg = Message.obtain((Handler) null, (int) MSG_UPDATE_REMOTE_SENSOR_EVENT);
             try {
-                msg.setData(new Bundle(in));
+                Bundle out = new Bundle(in);
+                msg.setData(out);
                 this.mRemoteMsgService.send(msg);
             } catch (RemoteException e) {
                 e.printStackTrace();
