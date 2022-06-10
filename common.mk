@@ -123,6 +123,14 @@ PRODUCT_PACKAGES += \
     VisualizationWallpapers \
     librs_jni
 
+# NFC
+PRODUCT_PACKAGES += \
+    android.hardware.secure_element@1.2 \
+    NfcNci \
+    Tag \
+    SecureElement \
+    com.android.nfc_extras
+
 # Prebuilt
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/asus/sm8250-common/prebuilt/product,product) \
