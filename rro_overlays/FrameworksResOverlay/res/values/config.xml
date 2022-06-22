@@ -387,4 +387,13 @@
         <item>evdo:4094,87380,524288,4096,16384,262144</item>
     </string-array>
 
+    <!-- Telephony qualified networks service package name to bind to by default. -->
+    <string name="config_qualified_networks_service_package">vendor.qti.iwlan</string>
+
+    <!-- IWLAN data service package name to bind to by default. -->
+    <string name="config_wlan_data_service_package">vendor.qti.iwlan</string>
+
+    <!-- IWLAN network service package name to bind to by default. -->
+    <string name="config_wlan_network_service_package">vendor.qti.iwlan</string>
+
 </resources>
