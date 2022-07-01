@@ -55,10 +55,12 @@ public class GestureSettings extends PreferenceFragment implements
 
     public static final String KEY_PROXI_SWITCH = "proxi";
     public static final String KEY_OFF_SCREEN_GESTURE_FEEDBACK_SWITCH = "off_screen_gesture_feedback";
+    public static final String KEY_OFFSCREEN_GESTURE = "zenmotion";
     public static final String KEY_SWIPEUP_SWITCH = "swipeup";
     public static final String KEY_SETTINGS_SWIPEUP_PREFIX = "gesture_setting_";
 
     public static final String SETTINGS_GESTURE_KEY = KEY_SETTINGS_SWIPEUP_PREFIX + KEY_SWIPEUP_SWITCH;
+    public static final String SETTINGS_ZENMOTION_KEY = KEY_SETTINGS_SWIPEUP_PREFIX + KEY_OFFSCREEN_GESTURE;
 
     public static final int KEY_W_ID = 0;
     public static final int KEY_S_ID = 1;
@@ -151,7 +153,7 @@ public class GestureSettings extends PreferenceFragment implements
 
         mSwipeUpSwitch = (TwoStatePreference) findPreference(KEY_SWIPEUP_SWITCH);
         mSwipeUpSwitch.setChecked(Settings.System.getInt(getContext().getContentResolver(),
-        KEY_SWIPEUP_SWITCH, 0) == 1);
+        SETTINGS_GESTURE_KEY, 0) == 1);
 
         new FetchPackageInformationTask().execute();
     }
@@ -175,7 +177,7 @@ public class GestureSettings extends PreferenceFragment implements
             return true;
         }
         if (preference == mSwipeUpSwitch) {
-            Settings.System.putInt(getContext().getContentResolver(), KEY_SWIPEUP_SWITCH, mSwipeUpSwitch.isChecked() ? 1 : 0);
+            Settings.System.putInt(getContext().getContentResolver(), SETTINGS_GESTURE_KEY, mSwipeUpSwitch.isChecked() ? 1 : 0);
             Utils.writeValue(getFile(), mSwipeUpSwitch.isChecked() ? "1" : "0");
             return true;
         }
@@ -262,7 +264,7 @@ public class GestureSettings extends PreferenceFragment implements
         String gestureType = String.format("%7s", Integer.toBinaryString(gestureMode)).replace(' ', '0');
         Log.i("GestureSettings", "gestureType=" +gestureType);
 
-        Settings.System.putString(getContext().getContentResolver(), Settings.System.OMNI_BUTTON_EXTRA_KEY_MAPPING, gestureType);
+        Settings.System.putString(getContext().getContentResolver(), SETTINGS_ZENMOTION_KEY, gestureType);
 
         Utils.writeLine(OFFSCREEN_PATH, gestureType);
     }

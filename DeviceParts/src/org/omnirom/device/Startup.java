@@ -133,12 +133,14 @@ public class Startup extends BroadcastReceiver {
             restore(GloveModeSwitch.getFile(), enabled);
         }
 
-        enabled = Settings.System.getInt(context.getContentResolver(), GestureSettings.SETTINGS_GESTURE_KEY, 0) != 0;
-        restore(GestureSettings.getFile(), enabled);
+        boolean enabledGesture = Settings.System.getInt(context.getContentResolver(), GestureSettings.SETTINGS_GESTURE_KEY, 0) != 0;
+        if (enabledGesture) {
+            restore(GestureSettings.getFile(), enabledGesture);
+        }
 
-        value = Settings.System.getString(context.getContentResolver(), Settings.System.OMNI_BUTTON_EXTRA_KEY_MAPPING);
-        if (!TextUtils.isEmpty(value)) {
-             Utils.writeLine(GestureSettings.OFFSCREEN_PATH, value);
+        String valueExtra = Settings.System.getString(context.getContentResolver(), GestureSettings.SETTINGS_ZENMOTION_KEY);
+        if (!TextUtils.isEmpty(valueExtra)) {
+             Utils.writeLine(GestureSettings.OFFSCREEN_PATH, valueExtra);
         }
 
         value = Settings.System.getString(context.getContentResolver(), DeviceSettings.FPS);
