@@ -101,6 +101,7 @@ public class GestureSettings extends PreferenceFragment implements
 
     private List<AppSelectListPreference.PackageItem> mInstalledPackages = new LinkedList<AppSelectListPreference.PackageItem>();
     private PackageManager mPm;
+    private int gestureMode;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -250,7 +251,10 @@ public class GestureSettings extends PreferenceFragment implements
 
     private void setGestureEnabled(int id, boolean enabled) {
         Log.i("GestureSettings", "setGestureEnabled called with key=" +id+ ",enabled=" +enabled);
-        int gestureMode = Integer.decode(Utils.readLine(OFFSCREEN_PATH).trim());
+
+        if (!DeviceSettings.isRog3) {
+            gestureMode = Integer.decode(Utils.readLine(OFFSCREEN_PATH).trim());
+        }
         int mask = ALL_GESTURE_MASKS[id];
 
         if (enabled)
