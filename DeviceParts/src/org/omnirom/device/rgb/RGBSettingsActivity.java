@@ -1,5 +1,5 @@
 /*
-* Copyright (C) 2017 The OmniROM Project
+* Copyright (C) 2022 The OmniROM Project
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -15,25 +15,16 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 *
 */
-package org.omnirom.device;
+package org.omnirom.device.rgb;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.Fragment;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import androidx.preference.PreferenceFragment;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceManager;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class GestureSettingsActivity extends Activity {
+public class RGBSettingsActivity extends Activity {
 
-    private GestureSettings mGestureSettingsFragment;
+    private RGBSettings mRGBSettingsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +32,12 @@ public class GestureSettingsActivity extends Activity {
 
         Fragment fragment = getFragmentManager().findFragmentById(android.R.id.content);
         if (fragment == null) {
-            mGestureSettingsFragment = new GestureSettings();
+            mRGBSettingsFragment = new RGBSettings();
             getFragmentManager().beginTransaction()
-                .add(android.R.id.content, mGestureSettingsFragment)
+                .add(android.R.id.content, mRGBSettingsFragment)
                 .commit();
         } else {
-            mGestureSettingsFragment = (GestureSettings) fragment;
+            mRGBSettingsFragment = (RGBSettings) fragment;
         }
     }
 

@@ -34,4 +34,38 @@
         <item>60</item>
         <item>90</item>
     </string-array>
+
+    <string-array name="scenario_entries" translatable="false">
+        <item>OFF</item>
+        <item>STATIC</item>
+        <item>BREATHING</item>
+        <item>STROBING</item>
+        <item>COLOR_CYCLE</item>
+        <item>MODE_RAINBOW</item>
+        <item>MODE_MIXED_STATIC</item>
+        <item>MODE_MIXED_SYNC</item>
+        <item>MODE_MIXED_ASYNC</item>
+        <item>MODE_MIXED_SINGLE</item>
+        <item>MODE_COMET_TO_RIGHT</item>
+        <item>MODE_FLASH_DASH_TO_RIGHT</item>
+        <item>MODE_COMET_TO_LEFT</item>
+        <item>MODE_FLASH_DASH_TO_LEFT</item>
+    </string-array>
+
+    <string-array name="scenario_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+    </string-array>
 </resources>

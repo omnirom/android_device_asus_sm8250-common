@@ -24,6 +24,7 @@ import android.content.SharedPreferences;
 import androidx.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.TextUtils;
+import org.omnirom.device.rgb.RGBSettings;
 
 public class Startup extends BroadcastReceiver {
     private static final String ASUS_GAMEMODE = "asus_gamemode";
@@ -157,6 +158,17 @@ public class Startup extends BroadcastReceiver {
             if (TextUtils.isEmpty(value)) {
                 value = "0";
                 Settings.Global.putString(context.getContentResolver(), ASUS_GAMEMODE, value);
+            }
+
+            String ledvalue = Settings.System.getString(context.getContentResolver(), RGBSettings.KEY_RGB_LED_SWITCH);
+            if (!TextUtils.isEmpty(ledvalue)) {
+                restore(RGBSettings.getLedsFile(RGBSettings.KEY_RGB_LED_SWITCH), ledvalue);
+            }
+
+            String scenariovalue = Settings.System.getString(context.getContentResolver(), RGBSettings.FPS);
+            if (TextUtils.isEmpty(scenariovalue)) {
+                scenariovalue = "0";
+                Settings.System.putString(context.getContentResolver(), RGBSettings.FPS, scenariovalue);
             }
         }
     }

@@ -105,6 +105,20 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="key_rgb_category"
+        android:title="@string/category_rgb_category">
+        <Preference
+            android:key="rog_rgb_category"
+            android:title="@string/category_rgb_title"
+            android:summary="@string/category_rgb_summary"
+            android:persistent="false" >
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="org.omnirom.device"
+                    android:targetClass="org.omnirom.device.rgb.RGBSettingsActivity" />
+        </Preference>
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="category_battery"
         android:title="@string/battery_manager">
         <Preference

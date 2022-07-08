@@ -93,4 +93,12 @@
     <string name="volume_mode">Sound</string>
     <string name="vibrate_mode">Vibrate</string>
     <string name="mute_mode">Mute</string>
+
+    <!-- RGB Leds -->
+    <string name="category_rgb_category">RGB Settings</string>
+    <string name="category_rgb_title">RGB Settings of ROG logo</string>
+    <string name="category_rgb_summary">Customize your ROG Led settings</string>
+    <string name="category_scenario">Scenarios</string>
+    <string name="scenario_title">Choose your Scenario</string>
+
 </resources>
