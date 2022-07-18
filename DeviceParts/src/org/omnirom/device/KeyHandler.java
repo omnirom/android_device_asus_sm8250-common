@@ -65,6 +65,7 @@ import com.android.internal.statusbar.IStatusBarService;
 import org.omnirom.omnilib.utils.DeviceKeyHandler;
 import org.omnirom.omnilib.utils.OmniUtils;
 import org.omnirom.omnilib.utils.OmniVibe;
+import org.omnirom.omnilib.utils.PackageUtils;
 
 public class KeyHandler implements DeviceKeyHandler {
 
@@ -98,6 +99,10 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int POCKET_MIN_DELTA_MS = 5000;
 
     private static final String DT2W_CONTROL_PATH = "/proc/driver/dclick";
+
+    private static final String CLIENT_PACKAGE_NAME = "com.asus.camera";
+    private static final String CLIENT_PACKAGE_PATH = "/data/misc/omni/client_package_name";
+    private static final String VENDOR_PROPERTY = "vendor.camera.apk.usingname";
 
     private static final int[] sSupportedGestures = new int[]{
         KEY_DOUBLE_TAP,
@@ -146,9 +151,10 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean mUsePocketCheck;
     private boolean mDispOn;
     private boolean isFpgesture;
-    private boolean isOPCameraAvail;
+    private boolean isASUSCameraAvail;
     private boolean mRestoreUser;
     private boolean mDoubleTapToWake;
+    private ClientPackageNameObserver mClientObserver;
 
     private SensorEventListener mProximitySensor = new SensorEventListener() {
         @Override
@@ -273,6 +279,12 @@ public class KeyHandler implements DeviceKeyHandler {
         systemStateFilter.addAction(Intent.ACTION_SCREEN_OFF);
         systemStateFilter.addAction(Intent.ACTION_USER_SWITCHED);
         mContext.registerReceiver(mSystemStateReceiver, systemStateFilter);
+
+        isASUSCameraAvail = PackageUtils.isAvailableApp(CLIENT_PACKAGE_NAME , context);
+        if (isASUSCameraAvail) {
+            mClientObserver = new ClientPackageNameObserver(CLIENT_PACKAGE_PATH);
+            mClientObserver.startWatching();
+        }
     }
 
     private class EventHandler extends Handler {
@@ -389,6 +401,10 @@ public class KeyHandler implements DeviceKeyHandler {
         if (mUseTiltCheck) {
             mSensorManager.unregisterListener(mTiltSensorListener, mTiltSensor);
         }
+        if ((mClientObserver == null) && (isASUSCameraAvail)) {
+            mClientObserver = new ClientPackageNameObserver(CLIENT_PACKAGE_PATH);
+            mClientObserver.startWatching();
+        }
     }
 
     private void updateDoubleTapToWake() {
@@ -409,6 +425,10 @@ public class KeyHandler implements DeviceKeyHandler {
         if (mUseTiltCheck) {
             mSensorManager.registerListener(mTiltSensorListener, mTiltSensor,
                     SensorManager.SENSOR_DELAY_NORMAL);
+        }
+        if (mClientObserver != null) {
+            mClientObserver.stopWatching();
+            mClientObserver = null;
         }
     }
 
@@ -556,5 +576,21 @@ public class KeyHandler implements DeviceKeyHandler {
 
     IStatusBarService getStatusBarService() {
         return IStatusBarService.Stub.asInterface(ServiceManager.getService("statusbar"));
+    }
+
+    private class ClientPackageNameObserver extends FileObserver {
+
+        public ClientPackageNameObserver(String file) {
+            super(CLIENT_PACKAGE_PATH, MODIFY);
+        }
+
+        @Override
+        public void onEvent(int event, String file) {
+            String pkgName = Utils.getFileValue(CLIENT_PACKAGE_PATH, "0");
+            if (event == FileObserver.MODIFY) {
+                Log.d(TAG, "client_package" + file + " and " + pkgName);
+                SystemProperties.set(VENDOR_PROPERTY, pkgName);
+            }
+        }
     }
 }
