@@ -1,0 +1,27 @@
+# Asus default prop
+type asus_laservalue_prop, property_type;
+type asus_prop, property_type;
+type vendor_asus_prop, property_type;
+type vendor_asus_sp_prop, property_type;
+
+# Audio
+type vendor_dts_audio_prop, property_type;
+
+# Fingerprint
+type vendor_gx_fpd_prop, property_type;
+
+# Gps
+type vendor_gps_prop, property_type;
+
+# Health
+type vendor_health_prop, property_type;
+
+# NFC
+type vendor_nfc_prop, property_type;
+
+# Storage
+type vendor_asus_storage_prop_2, property_type;
+type vendor_asus_storage_prop, property_type;
+
+# Thermal
+type vendor_thermal_prop, property_type;

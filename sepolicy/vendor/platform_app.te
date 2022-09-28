@@ -1,0 +1,22 @@
+binder_call(platform_app, hal_camera_default)
+
+# Some apps ship with shared libraries and binaries that they write out
+# to their sandbox directory and then execute.
+allow platform_app privapp_data_file:file { r_file_perms execute };
+allow platform_app app_data_file:file { r_file_perms execute };
+auditallow platform_app app_data_file:file execute;
+
+allow platform_app asus_laser_device:chr_file rw_file_perms;
+allow platform_app asus_motor_device:chr_file rw_file_perms;
+allow platform_app rs_exec:file rx_file_perms;
+
+# Allow platform_app to find asus_motor_hwservice
+allow platform_app asus_motor_hwservice:hwservice_manager find;
+
+get_prop(platform_app, asus_prop)
+get_prop(platform_app, vendor_asus_prop)
+get_prop(platform_app, vendor_asus_sp_prop)
+get_prop(platform_app, vendor_camera_prop)
+
+# Allow SystemUI overlay to find NFC for the tile
+allow platform_app nfc_service:service_manager find;

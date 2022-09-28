@@ -1,0 +1,18 @@
+# Policy for Asus SP HAL service
+type asus_sensors, domain;
+type asus_sensors_exec, exec_type, vendor_file_type, file_type;
+
+# Started by init
+init_daemon_domain(asus_sensors)
+
+allow asus_sensors init:unix_stream_socket { connectto };
+allow asus_sensors kmsg_device:chr_file { write getattr open };
+allow asus_sensors mnt_vendor_file:dir { ioctl read write getattr lock open watch watch_reads add_name search };
+allow asus_sensors vendor_toolbox_exec:file { getattr map execute execute_no_trans };
+allow asus_sensors vendor_file:file { getattr map execute execute_no_trans };
+allow asus_sensors mnt_vendor_file:file rw_file_perms;
+allow asus_sensors sensors_device:chr_file rw_file_perms;
+allow asus_sensors sysfs:file { ioctl read write getattr lock append map open watch watch_reads };
+allow asus_sensors asus_sensors_device:chr_file rw_file_perms;
+
+get_prop(asus_sensors, vendor_asus_prop)

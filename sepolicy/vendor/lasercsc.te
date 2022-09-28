@@ -1,0 +1,19 @@
+# Policy for Asus laser camera HAL service
+type lasercsc, domain;
+type lasercsc_exec, exec_type, vendor_file_type, file_type;
+
+# Started by init
+init_daemon_domain(lasercsc)
+
+allow lasercsc vendor_toolbox_exec:file {execute_no_trans };
+allow lasercsc vendor_file:file {execute_no_trans };
+allow lasercsc asus_laser_device:chr_file {ioctl read write open };
+allow lasercsc kmsg_device:chr_file {write getattr open };
+allow lasercsc mnt_vendor_file:dir {write add_name remove_name search };
+allow lasercsc mnt_vendor_file:file {read write create getattr setattr unlink open };
+allow lasercsc vendor_camera_data_file:dir {write add_name search };
+allow lasercsc vendor_camera_data_file:file r_file_perms;
+allow lasercsc proc:file {write open };
+
+get_prop(lasercsc, asus_laservalue_prop)
+set_prop(lasercsc, asus_laservalue_prop)

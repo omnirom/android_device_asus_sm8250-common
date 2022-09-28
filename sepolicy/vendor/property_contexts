@@ -1,0 +1,122 @@
+# AsusLogTool
+persist.vendor.dbg.                             u:object_r:system_prop:s0
+persist.vendor.port_bridge                      u:object_r:system_prop:s0
+persist.vendor.asus.gcf.mode                    u:object_r:radio_control_prop:s0
+persist.vendor.asus.amr2g.mode                  u:object_r:radio_control_prop:s0
+persist.vendor.asus.amr3g.mode                  u:object_r:radio_control_prop:s0
+persist.vendor.asus.psconfig.mode               u:object_r:radio_control_prop:s0
+# for antenna switch
+persist.vendor.radio.airplane_mode_on           u:object_r:radio_control_prop:s0
+
+# Asus sp
+ro.vendor.config.CID                            u:object_r:vendor_asus_prop:s0
+ro.vendor.config.idcode                         u:object_r:vendor_asus_prop:s0
+ro.vendor.config.versatility                    u:object_r:vendor_asus_prop:s0
+ro.vendor.config.revenuecountry                 u:object_r:vendor_asus_prop:s0
+ro.vendor.build.asus.                           u:object_r:vendor_asus_prop:s0
+
+ro.vendor.asus.product.mkt_name                 u:object_r:vendor_asus_sp_prop:s0
+ro.vendor.asus.phone.hac                        u:object_r:vendor_asus_sp_prop:s0
+ro.vendor.asus.phone.tty                        u:object_r:vendor_asus_sp_prop:s0
+ro.vendor.build.asus.fota                       u:object_r:vendor_asus_sp_prop:s0
+ro.vendor.build.csc.version                     u:object_r:vendor_asus_sp_prop:s0
+ro.vendor.build.asus.version                    u:object_r:vendor_asus_sp_prop:s0
+ro.vendor.build.asus.sku                        u:object_r:vendor_asus_sp_prop:s0
+ro.vendor.build.asus.number                     u:object_r:vendor_asus_sp_prop:s0
+ro.vendor.build.fota.version                    u:object_r:vendor_asus_sp_prop:s0
+ro.vendor.facebook.partnerid                    u:object_r:vendor_asus_sp_prop:s0
+vendor.atd.oem-uart                             u:object_r:vendor_asus_sp_prop:s0
+vendor.atd.unlocked.ready                       u:object_r:vendor_asus_sp_prop:s0
+vendor.atd.fusing.ready                         u:object_r:vendor_asus_sp_prop:s0
+vendor.factory.adbon                            u:object_r:vendor_asus_sp_prop:s0
+vendor.debug.update.deviceinfo.result           u:object_r:vendor_asus_sp_prop:s0
+ro.vendor.cpufreq                               u:object_r:vendor_asus_sp_prop:s0
+ro.vendor.memsize                               u:object_r:vendor_asus_sp_prop:s0
+ro.vendor.isn                                   u:object_r:vendor_asus_sp_prop:s0
+persist.vendor.asus.serialno                    u:object_r:vendor_asus_sp_prop:s0
+vendor.asus.build.ext.version                   u:object_r:vendor_asus_sp_prop:s0
+vendor.asus.build.sub.version                   u:object_r:vendor_asus_sp_prop:s0
+vendor.asus.country.fp                          u:object_r:vendor_asus_sp_prop:s0
+persist.vendor.asus.                            u:object_r:system_prop:s0
+persist.vendor.asus.no.country                  u:object_r:vendor_asus_sp_prop:s0
+vendor.x-rr.                                    u:object_r:vendor_asus_sp_prop:s0
+
+# Audio
+vendor.asus.vendor_audiocalibration             u:object_r:vendor_asus_prop:s0
+vendor.audio.calibration.                       u:object_r:vendor_asus_prop:s0
+vendor.dts.audio.                               u:object_r:vendor_dts_audio_prop:s0
+ro.vendor.dts.                                  u:object_r:vendor_dts_audio_prop:s0
+
+# BT and Wifi
+ro.vendor.wifimac                               u:object_r:vendor_asus_prop:s0
+ro.vendor.wifimac_2                             u:object_r:vendor_asus_prop:s0
+vendor.wifi.version.driver                      u:object_r:vendor_asus_prop:s0
+vendor.debug.camera.lasercsc                    u:object_r:vendor_asus_prop:s0
+vendor.debug.camera.lasercsc.laservalue         u:object_r:asus_laservalue_prop:s0
+
+# Camera
+persist.vendor.camera.hal3only                  u:object_r:system_prop:s0
+vendor.camera.                                  u:object_r:vendor_camera_prop:s0
+vendor.camera.expTimeMax                        u:object_r:asus_prop:s0
+vendor.camera.facing                            u:object_r:asus_prop:s0
+vendor.camera.motiontracking                    u:object_r:asus_prop:s0
+
+# Charging
+ro.vendor.smartcharging                         u:object_r:vendor_health_prop:s0
+persist.vendor.pps.power_limit_w                u:object_r:vendor_health_prop:s0
+persist.vendor.chg.max_volt_mv                  u:object_r:vendor_health_prop:s0
+
+# Fingerprint
+vendor.fp.version.driver                        u:object_r:vendor_gx_fpd_prop:s0
+vendor.asus.fp.wakeup                           u:object_r:vendor_gx_fpd_prop:s0
+persist.vendor.asus.fp.wakeup                   u:object_r:vendor_gx_fpd_prop:s0
+persist.vendor.asus.fp.wakeup_support           u:object_r:vendor_gx_fpd_prop:s0
+vendor.gf.debug.dump_data                       u:object_r:vendor_gx_fpd_prop:s0
+vendor.gf.debug.dump_talog_data                 u:object_r:vendor_gx_fpd_prop:s0
+vendor.gf.debug.whitebox.enabled                u:object_r:vendor_gx_fpd_prop:s0
+vendor.goodix.                                  u:object_r:vendor_gx_fpd_prop:s0
+
+# Gps
+persist.vendor.asus.agps.ntpinjecttime          u:object_r:vendor_gps_prop:s0
+persist.vendor.asus.agps.injecttime             u:object_r:vendor_gps_prop:s0
+persist.vendor.asus.gps.engstate                u:object_r:vendor_gps_prop:s0
+
+# Motor
+persist.vendor.asus.motor                       u:object_r:vendor_asus_prop:s0
+persist.vendor.asus.motorservice.               u:object_r:exported_system_prop:s0
+persist.vendor.asus.motorservice.playsound      u:object_r:system_prop:s0
+persist.vendor.asus.asusrecord.                 u:object_r:vendor_asus_prop:s0
+
+# NFC
+persist.vendor.nfc.                             u:object_r:vendor_nfc_prop:s0
+
+# Radio
+vendor.tel.                                     u:object_r:radio_control_prop:s0
+ro.vendor.csc.modemhash1                        u:object_r:radio_control_prop:s0
+ro.vendor.csc.modemhash2                        u:object_r:radio_control_prop:s0
+
+# SIM Card active
+persist.vendor.asus.sim1.enabled                u:object_r:vendor_radio_prop:s0
+persist.vendor.asus.sim2.enabled                u:object_r:vendor_radio_prop:s0
+
+# SIM Card Present
+vendor.gsm.sim1.present                         u:object_r:radio_control_prop:s0
+vendor.gsm.sim2.present                         u:object_r:radio_control_prop:s0
+
+# Storage
+vendor.asus.update.storage.status             u:object_r:system_prop:s0
+vendor.asus.storage.primary.status            u:object_r:vendor_asus_storage_prop_2:s0
+vendor.asus.storage.primary.type              u:object_r:vendor_asus_storage_prop_2:s0
+vendor.asus.storage.primary.size              u:object_r:vendor_asus_storage_prop_2:s0
+vendor.asus.storage.primary.health            u:object_r:vendor_asus_storage_prop_2:s0
+vendor.asus.storage.primary.healthtypeA       u:object_r:vendor_asus_storage_prop_2:s0
+vendor.asus.storage.primary.healthtypeB       u:object_r:vendor_asus_storage_prop_2:s0
+vendor.asus.storage.primary.ufs_info          u:object_r:vendor_asus_storage_prop_2:s0
+vendor.asus.storage.primary.vendor            u:object_r:vendor_asus_storage_prop_2:s0
+
+# Thermal
+ro.vendor.thermal                               u:object_r:vendor_thermal_prop:s0
+vendor.asus.thermal_config_id                   u:object_r:vendor_thermal_prop:s0
+vendor.thermal.dumpsys                          u:object_r:vendor_thermal_prop:s0
+vendor.thermal.                                 u:object_r:vendor_thermal_prop:s0
+vendor.thermal_                                 u:object_r:vendor_thermal_prop:s0

@@ -19,7 +19,6 @@
 # product configuration (apps).
 #
 COMMON_PATH := device/asus/sm8250-common
-IMAGES_PATH := vendor/images/asus/$(TARGET_DEVICE)
 
 BOARD_VENDOR := asus
 
@@ -61,16 +60,10 @@ BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 1
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
 
 # Audio
-#USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
-AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := true
-AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
-AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
-AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
-AUDIO_FEATURE_ENABLED_RECORD_PLAY_CONCURRENCY := true
-AUDIO_FEATURE_ENABLED_VOICE_CONCURRENCY := true
 
 # Broken flags
+BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 BUILD_BROKEN_ENFORCE_SYSPROP_OWNER := true
 
@@ -89,7 +82,7 @@ endif
 
 # Display
 TARGET_USES_HWC2 := true
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+TARGET_SCREEN_DENSITY := 420
 
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
@@ -115,7 +108,7 @@ TARGET_INIT_VENDOR_LIB := //$(COMMON_PATH):libinit_sm8250
 BOARD_BOOT_HEADER_VERSION := 2
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0xa90000 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 loop.max_part=7 cgroup.memory=nokmem,nosocket reboot=panic_warm
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_TAGS_OFFSET := 0x00008000
@@ -164,9 +157,6 @@ BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 6441926656
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
 BOARD_SUPER_PARTITION_SIZE := 12884901888
 
-BOARD_PREBUILT_ODMIMAGE := $(IMAGES_PATH)/odm.img
-BOARD_PREBUILT_VENDORIMAGE := $(IMAGES_PATH)/vendor.img
-
 BOARD_ROOT_EXTRA_FOLDERS += ADF APD asdf batinfo xrom
 
 # Platform
@@ -189,11 +179,24 @@ TARGET_USES_MKE2FS := true
 
 # Sepolicy
 include vendor/omni/sepolicy/sepolicy.mk
-include device/qcom/sepolicy_custom/SEPolicy.mk
+include device/qcom/sepolicy_vndr/SEPolicy.mk
 
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
 PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/product/private
 
 # Treble
 BOARD_VNDK_VERSION := current
+
+# WiFi
+BOARD_WLAN_DEVICE := qcwcn
+BOARD_HOSTAPD_DRIVER := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+WIFI_DRIVER_DEFAULT := qca_cld3
+WIFI_DRIVER_STATE_CTRL_PARAM := "/dev/wlan"
+WIFI_DRIVER_STATE_OFF := "OFF"
+WIFI_DRIVER_STATE_ON := "ON"
+WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
+WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
+WPA_SUPPLICANT_VERSION := VER_0_8_X

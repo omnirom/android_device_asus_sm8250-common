@@ -1,0 +1,17 @@
+allow init {
+    xrom_file
+    demoapp_file
+    log_file
+    bat_file
+}:dir mounton;
+
+allow init vendor_motor_camera:file write;
+
+allow init asus_sensors_exec:file r_file_perms;
+allow init asus_sensors:process transition;
+
+allow init asus_sp_exec:file r_file_perms;
+allow init asus_sp:process transition;
+
+allow init lasercsc_exec:file r_file_perms;
+allow init lasercsc:process transition;

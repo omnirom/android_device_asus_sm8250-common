@@ -1,0 +1,2 @@
+get_prop(vendor_hvdcp, vendor_asus_prop)
+get_prop(vendor_hvdcp, vendor_health_prop)

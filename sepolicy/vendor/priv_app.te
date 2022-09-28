@@ -1,0 +1,4 @@
+allow priv_app asus_motor_hwservice:hwservice_manager find;
+allow priv_app system_lib_file:file { read getattr lock open };
+
+get_prop(priv_app, asus_prop)
