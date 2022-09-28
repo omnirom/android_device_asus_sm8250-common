@@ -1,0 +1,4 @@
+set_prop(rild, vendor_radio_prop)
+
+# Allow to read/ write to proc asusevtlog
+allow rild vendor_proc_evt:file rw_file_perms;

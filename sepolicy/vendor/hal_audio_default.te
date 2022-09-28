@@ -1,0 +1,14 @@
+allow hal_audio_default system_suspend_hwservice:hwservice_manager find;
+
+set_prop(hal_audio_default, vendor_audio_prop)
+
+get_prop(hal_audio_default, asus_prop)
+get_prop(hal_audio_default, vendor_asus_prop)
+set_prop(hal_audio_default, vendor_asus_prop)
+
+get_prop(hal_audio_default, vendor_asus_sp_prop)
+
+get_prop(hal_audio_default, vendor_dts_audio_prop)
+
+# Allow hal_audio_default to read files in mnt_vendor_file
+r_dir_file(hal_audio_default, mnt_vendor_file)

@@ -1,0 +1,16 @@
+allow vendor_init cgroup:file getattr;
+allow vendor_init vendor_proc_camera:file rw_file_perms;
+allow vendor_init asus_laser_device:chr_file {ioctl open read write };
+allow vendor_init asus_sensors_device:chr_file rw_file_perms;
+
+set_prop(vendor_init, vendor_asus_sp_prop)
+
+get_prop(vendor_init, vendor_camera_prop)
+set_prop(vendor_init, vendor_camera_prop)
+
+set_prop(vendor_init, vendor_asus_prop)
+set_prop(vendor_init, vendor_dts_audio_prop)
+set_prop(vendor_init, vendor_gx_fpd_prop)
+set_prop(vendor_init, vendor_health_prop)
+set_prop(vendor_init, vendor_thermal_prop)
+set_prop(vendor_init, vendor_wifi_prop)

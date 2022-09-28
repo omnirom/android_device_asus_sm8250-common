@@ -1,1 +1,28 @@
-type sysfs_scsi_devices_0000, sysfs_type, fs_type;
+# Camera & Motor
+type omni_data_file, file_type, data_file_type,  core_data_file_type;
+type vendor_proc_camera, fs_type, proc_type;
+type vendor_motor_camera, fs_type, proc_type;
+
+# Display
+type vendor_proc_graphics, fs_type, proc_type;
+
+# EVT
+type vendor_proc_evt, fs_type, proc_type;
+
+# Extcon
+type sysfs_hallsensor_file, sysfs_type, fs_type;
+type sysfs_mcu_version, sysfs_type, fs_type;
+
+# Fingerprint
+type vendor_goodix_data_file, file_type, data_file_type;
+
+# rootfs
+type asusfw_file, file_type;
+type log_file, file_type;
+type bat_file, file_type;
+type demoapp_file, file_type;
+type persist_file, file_type;
+type xrom_file, file_type;
+
+# Smart key
+type vendor_sysfs_gestures, sysfs_type, fs_type;
