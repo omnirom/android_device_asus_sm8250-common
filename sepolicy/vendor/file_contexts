@@ -23,6 +23,7 @@
 /data/misc/omni/client_package_name                                                                u:object_r:omni_data_file:s0
 /dev/stmvl53l1_ranging                                                                             u:object_r:asus_laser_device:s0
 /(vendor|system/vendor)/bin/lasercsc                                                               u:object_r:lasercsc_exec:s0
+/(vendor|system/vendor)/lib(64)?/DataSet/ispDB/ParameterDB.db                                      u:object_r:vendor_public_lib_file:s0
 
 # Extcon
 /sys/devices/virtual/extcon/mcu/name                                                               u:object_r:sysfs_mcu_version:s0
@@ -32,9 +33,14 @@
 /sys/devices/virtual/extcon/quick_charging/state                                                   u:object_r:vendor_sysfs_battery_supply:s0
 /sys/devices/virtual/extcon/usb_connector/state                                                    u:object_r:vendor_sysfs_battery_supply:s0
 /sys/devices/virtual/extcon/vbus_liquid/stat                                                       u:object_r:vendor_sysfs_battery_supply:s0
+/sys/devices/virtual/extcon/station_level/state                                                    u:object_r:vendor_sysfs_battery_supply:s0
+/sys/devices/virtual/extcon/station_status/state                                                   u:object_r:vendor_sysfs_battery_supply:s0
+/sys/devices/virtual/extcon/station_battery/name                                                   u:object_r:vendor_sysfs_battery_supply:s0
+/sys/devices/virtual/extcon/station_present/state                                                  u:object_r:vendor_sysfs_battery_supply:s0
+/sys/devices/virtual/extcon/reverse_charging/state                                                 u:object_r:vendor_sysfs_battery_supply:s0
 
 # Fingerprint
-/data/vendor/goodix(/.*)?                                                                          u:object_r:vendor_goodix_data_file:s0
+/data/vendor/goodix/gf_data(/.*)?                                                                  u:object_r:vendor_goodix_data_file:s0
 /dev/goodix_fp                                                                                     u:object_r:fingerprintd_device:s0
 
 # Files in rootfs
@@ -50,6 +56,8 @@
 # Sensors
 /dev/asus2ndAccelSensor                                                                            u:object_r:asus_sensors_device:s0
 /dev/asus2ndGyroSensor                                                                             u:object_r:asus_sensors_device:s0
+/dev/lsensor                                                                                       u:object_r:sensors_device:s0
+/dev/psensor                                                                                       u:object_r:sensors_device:s0
 
 # Storage
 /(vendor|system/vendor)/bin/ufs_info.sh                                                            u:object_r:asus_storage_exec:s0

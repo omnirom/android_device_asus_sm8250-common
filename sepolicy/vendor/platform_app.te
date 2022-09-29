@@ -10,9 +10,6 @@ allow platform_app asus_laser_device:chr_file rw_file_perms;
 allow platform_app asus_motor_device:chr_file rw_file_perms;
 allow platform_app rs_exec:file rx_file_perms;
 
-# Allow platform_app to find asus_motor_hwservice
-allow platform_app asus_motor_hwservice:hwservice_manager find;
-
 get_prop(platform_app, asus_prop)
 get_prop(platform_app, vendor_asus_prop)
 get_prop(platform_app, vendor_asus_sp_prop)

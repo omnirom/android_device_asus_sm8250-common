@@ -1,16 +1,15 @@
 binder_call(hal_camera_default, system_server)
 binder_call(hal_camera_default, system_app)
 
-add_hwservice(hal_camera_default, asus_motor_hwservice)
-
 # Allow hal_camera_default to find motor camera service
-allow hal_camera_default asus_motor_hwservice:hwservice_manager find;
+allow hal_camera_default asus_bspcam_hwservice:hwservice_manager { add find };
 
 allow hal_camera_default asus_laser_device:chr_file rw_file_perms;
-allow hal_camera_default vendor_file:file lock;
 allow hal_camera_default mnt_vendor_file:file { read getattr open };
 allow hal_camera_default mnt_vendor_file:dir { search };
-allow hal_camera_default system_lib_file:file { read getattr lock open };
+
+allow hal_camera_default vendor_file:file lock;
+allow hal_camera_default vendor_public_lib_file:file lock;
 
 get_prop(hal_camera_default, bootanim_system_prop)
 get_prop(hal_camera_default, vendor_asus_prop)

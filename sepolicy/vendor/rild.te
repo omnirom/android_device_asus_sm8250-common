@@ -1,4 +1,8 @@
+get_prop(rild, vendor_asus_sp_prop)
+
 set_prop(rild, vendor_radio_prop)
 
 # Allow to read/ write to proc asusevtlog
 allow rild vendor_proc_evt:file rw_file_perms;
+
+allow rild vendor_toolbox_exec:file execute_no_trans;

@@ -1,5 +1,7 @@
 # Battery
-genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/ultra_bat_life         u:object_r:vendor_sysfs_battery_supply:s0
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/ultra_bat_life                  u:object_r:vendor_sysfs_battery_supply:s0
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/TypeC_Side_Detect2              u:object_r:vendor_sysfs_battery_supply:s0
+genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:vadc@3100/iio:device1/in_temp_wp_therm_input   u:object_r:vendor_sysfs_battery_supply:s0
 
 # Camera
 genfscon proc /driver/dualcam_cali                                                              u:object_r:vendor_proc_camera:s0
@@ -23,6 +25,8 @@ genfscon sysfs /devices/platform/soc/1d84000.ufshc/hibern8_on_idle_enable       
 # Sensors
 genfscon sysfs /class/icm206xx                                                                  u:object_r:vendor_sysfs_sensors:s0
 genfscon sysfs /devices/virtual/sensors                                                         u:object_r:vendor_sysfs_sensors:s0
+genfscon sysfs /devices/virtual/sensors/lsensor/switch                                          u:object_r:vendor_sysfs_sensors:s0
+genfscon sysfs /devices/virtual/sensors/psensor/switch                                          u:object_r:vendor_sysfs_sensors:s0
 
 # Smart key
 genfscon sysfs /devices/platform/soc/soc:asustek_googlekey/googlekey_enable                     u:object_r:vendor_sysfs_gestures:s0
