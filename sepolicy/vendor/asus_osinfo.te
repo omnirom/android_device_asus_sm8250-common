@@ -1,0 +1,13 @@
+type asus_osinfo, domain;
+type asus_osinfo_exec, exec_type, vendor_file_type, file_type;
+
+# Started by init
+init_daemon_domain(asus_osinfo)
+
+allow asus_osinfo block_device:dir search;
+allow asus_osinfo sysinfo_block_device:blk_file rw_file_perms;
+
+get_prop(asus_osinfo, build_prop)
+get_prop(asus_osinfo, vendor_asus_prop)
+get_prop(asus_osinfo, vendor_asus_storage_prop)
+get_prop(asus_osinfo, vendor_radio_prop)

@@ -1,0 +1,2 @@
+set_prop(vendor_hal_perf_default, vendor_thermal_prop)
+allow vendor_hal_perf_default hal_camera_default:dir search;

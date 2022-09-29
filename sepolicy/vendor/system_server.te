@@ -1,8 +1,14 @@
+# Battery
+allow system_server vendor_sysfs_battery_supply:file { read getattr open };
+
 # Camera
 allow system_server omni_data_file:file r_file_perms;
 
 # Allow system_server to read/write for display gestures and smart key
 allow system_server vendor_proc_graphics:file rw_file_perms;
 allow system_server vendor_sysfs_gestures:file { rw_file_perms setattr };
+allow system_server vendor_sysfs_sensors:file r_file_perms;
 
 allow system_server sysfs_hallsensor_file:file rw_file_perms;
+allow system_server vendor_proc_evt:file append;
+allow system_server vendor_proc_evt:file {ioctl read write getattr lock append map open watch watch_reads };

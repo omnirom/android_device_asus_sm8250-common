@@ -17,6 +17,8 @@ allow asus_sp xrom_file:file r_file_perms;
 allow asus_sp asusfw_file:dir search;
 allow asus_sp asusfw_file:file r_file_perms;
 
+get_prop(asus_sp, build_prop)
+
 get_prop(asus_sp, vendor_asus_prop)
 set_prop(asus_sp, vendor_asus_prop)
 
