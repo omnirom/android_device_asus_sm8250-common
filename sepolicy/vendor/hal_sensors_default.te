@@ -1,3 +1,8 @@
 allow hal_sensors_default sensors_device:chr_file rw_file_perms;
 allow hal_sensors_default asus_sensors_device:chr_file rw_file_perms; 
 #allow hal_sensors_default vendor_sysfs_sensors:file rw_file_perms;
+
+set_prop(hal_sensors_default, vendor_asus_prop)
+
+get_prop(hal_sensors_default, vendor_thermal_prop)
+set_prop(hal_sensors_default, vendor_thermal_prop)

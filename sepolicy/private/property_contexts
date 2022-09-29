@@ -1,0 +1,2 @@
+# Telephony
+vendor.tel.ims.reg    u:object_r:exported_system_prop:s0

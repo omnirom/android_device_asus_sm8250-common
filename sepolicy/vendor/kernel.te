@@ -1,4 +1,6 @@
 # Battery
 allow kernel bat_file:dir rw_dir_perms;
 allow kernel bat_file:file create_file_perms;
-allow kernel log_file:dir search;
+allow kernel log_file:dir rw_dir_perms;
+allow kernel log_file:file create_file_perms;
+allow kernel log_file:file rw_file_perms;

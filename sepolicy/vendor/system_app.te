@@ -3,8 +3,10 @@ binder_call(system_app, hal_camera_default)
 allow system_app asus_laser_device:chr_file rw_file_perms;
 allow system_app asus_motor_device:chr_file rw_file_perms;
 
-# Allow system_app to find asus_motor_hwservice
-allow system_app asus_motor_hwservice:hwservice_manager find;
+# Allow system_app to find asus_bspcam_hwservice
+allow system_app asus_bspcam_hwservice:hwservice_manager find;
+
+allow system_app sysfs_touch:file rw_file_perms;
 
 # Allow system_app to read/write for display gestures and smart key
 allow system_app vendor_proc_graphics:file { rw_file_perms setattr };
@@ -17,3 +19,10 @@ allow system_app sysfs_mcu_version:file {read getattr setattr open};
 get_prop(system_app, vendor_asus_prop)
 
 allow system_app self:netlink_kobject_uevent_socket { bind create getopt read setopt };
+
+allow system_app cache_file:lnk_file read;
+allow system_app cache_file:dir search;
+allow system_app log_file:file rw_file_perms;
+allow system_app log_file:dir { rw_dir_perms search };
+allow system_app bat_file:file r_file_perms;
+allow system_app bat_file:dir search;
