@@ -101,6 +101,11 @@ PRODUCT_PACKAGES += \
     animation.txt \
     font_charger.png
 
+# Compatibility files
+PRODUCT_PACKAGES += \
+    android.hardware.light-V1-ndk_platform.vendor \
+    android.hardware.power-V1-ndk_platform.vendor
+
 # DeviceParts
 PRODUCT_PACKAGES += \
     DeviceParts
