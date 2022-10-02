@@ -31,6 +31,10 @@ genfscon sysfs /devices/virtual/sensors/psensor/switch                          
 # Smart key
 genfscon sysfs /devices/platform/soc/soc:asustek_googlekey/googlekey_enable                     u:object_r:vendor_sysfs_gestures:s0
 
+# Textura
+genfscon texfat /                                                                               u:object_r:exfat:s0
+genfscon tntfs /                                                                                u:object_r:vfat:s0
+
 # Wakeup
 genfscon sysfs /devices/0306_02.01.00/wakeup                                                                                        u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/dummy_hcd.0/usb1/wakeup                                                                            u:object_r:sysfs_wakeup:s0
