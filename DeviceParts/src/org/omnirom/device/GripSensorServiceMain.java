@@ -23,7 +23,7 @@ import android.os.Messenger;
 import android.util.Log;
 
 public class GripSensorServiceMain extends Service {
-    private static final String TAG = "GripSensor";
+    private static final String TAG = "GripSensorOmni";
     private static final boolean DEBUG = true;
 
     private GripSensor mGripSensor;

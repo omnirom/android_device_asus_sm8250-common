@@ -49,7 +49,7 @@ public class GripSensor {
     private static final int REMOTE_SERVICE_STATE_BINDING = 1;
     private static final int REMOTE_SERVICE_STATE_BOUND = 2;
     private static final int REMOTE_SERVICE_STATE_UNBOUND = 0;
-    private static final String TAG = "GripSensor";
+    private static final String TAG = "GripSensorOmni";
     private Context mContext;
     private MyGripsensorListener mGripSensorListener;
     private HandlerThread mHandlerThread;

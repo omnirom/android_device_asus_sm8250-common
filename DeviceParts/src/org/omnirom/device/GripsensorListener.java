@@ -13,7 +13,7 @@ import android.util.Log;
 public abstract class GripsensorListener implements SensorEventListener {
     private static final int GRIP_GESTURE_LONG_SQUEEZE = 8;
     private static final int GRIP_GESTURE_SHORT_SQUEEZE = 7;
-    private static final String TAG = "GripSensorListener";
+    private static final String TAG = "GripSensorListenerOmni";
     protected Handler mHandler;
     private boolean mIsRegistered = false;
     private Sensor mSensor;
