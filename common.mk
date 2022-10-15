@@ -28,9 +28,6 @@ PRODUCT_PACKAGES += \
     TetheringConfigOverlay \
     WifiOverlay
 
-# VNDK
-PRODUCT_EXTRA_VNDK_VERSIONS := 30
-
 # A/B
 AB_OTA_UPDATER := true
 
