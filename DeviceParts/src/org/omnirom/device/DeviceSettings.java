@@ -84,7 +84,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String SURFACE_FLINGER_SERVICE_KEY = "SurfaceFlinger";
     private static final String SURFACE_COMPOSER_INTERFACE_KEY = "android.ui.ISurfaceComposer";
     private static final int SURFACE_FLINGER_CODE = 1035;
-    private static Map<Integer, Integer> fpsMap = Map.of(144, 1, 120, 2, 90, 3, 60, 4);
+    private static Map<Integer, Integer> fpsMap = Map.of(160, 0, 144, 1, 120, 2, 90, 3, 60, 4);
     private static Map<Integer, Integer> fpsMapZF7 = Map.of(90, 0, 60, 1);
     private static IBinder mSurfaceFlinger;
 

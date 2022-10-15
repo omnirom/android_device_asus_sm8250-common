@@ -27,6 +27,7 @@ public class FrameRateTileService extends TileService {
     private static final String FPS_VALUE_90 = "90";
     private static final String FPS_VALUE_120 = "120";
     private static final String FPS_VALUE_144 = "144";
+    private static final String FPS_VALUE_160 = "160";
 
     @Override
     public void onDestroy() {
@@ -61,6 +62,9 @@ public class FrameRateTileService extends TileService {
                 break;
             case FPS_VALUE_144:
                 getQsTile().setIcon(Icon.createWithResource(this, R.drawable.ic_refresh_rate_144));
+                break;
+            case FPS_VALUE_160:
+                getQsTile().setIcon(Icon.createWithResource(this, R.drawable.ic_refresh_rate_160));
                 break;
         }
         getQsTile().updateTile();
@@ -97,6 +101,10 @@ public class FrameRateTileService extends TileService {
                 getQsTile().setIcon(Icon.createWithResource(this, R.drawable.ic_refresh_rate_144));
                 break;
             case FPS_VALUE_144:
+                DeviceSettings.changeFps(this, Integer.valueOf(FPS_VALUE_160));
+                getQsTile().setIcon(Icon.createWithResource(this, R.drawable.ic_refresh_rate_160));
+                break;
+            case FPS_VALUE_160:
                 DeviceSettings.changeFps(this, Integer.valueOf(DEFAULT_FPS_VALUE));
                 getQsTile().setIcon(Icon.createWithResource(this, R.drawable.ic_refresh_rate));
                 break;
