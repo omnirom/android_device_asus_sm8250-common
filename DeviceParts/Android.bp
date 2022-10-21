@@ -3,6 +3,7 @@ android_app {
 
     defaults: [
         "SettingsLibDefaults",
+        "udfps_rog3",
     ],
 
     static_libs: [
@@ -10,7 +11,6 @@ android_app {
         "androidx.preference_preference",
         "OmniLib",
         "OmniLibCore",
-        "vendor.goodix.hardware.biometrics.fingerprint-V2.1-java",
     ],
 
     srcs: [
@@ -28,5 +28,28 @@ android_app {
     },
     dex_preopt: {
         enabled: false,
+    },
+}
+
+soong_config_module_type {
+    name: "udfps_defaults",
+    module_type: "cc_defaults",
+    config_namespace: "AsusVars",
+    bool_variables: ["use_udfps"],
+    properties: [
+        "cflags",
+        "shared_libs",
+    ],
+}
+
+udfps_defaults {
+    name: "udfps_rog3",
+    soong_config_variables: {
+        use_udfps: {
+            cflags: ["-DUSE_UDFPS"],
+            shared_libs: [
+                "vendor.goodix.hardware.biometrics.fingerprint-V2.1-java",
+            ],
+        },
     },
 }

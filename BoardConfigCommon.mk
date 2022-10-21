@@ -185,6 +185,11 @@ BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/product/private
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
 
+# Soong
+SOONG_CONFIG_NAMESPACES += AsusVars
+SOONG_CONFIG_AsusVars += use_udfps
+SOONG_CONFIG_AsusVars_use_udfps := false
+
 # Treble
 BOARD_VNDK_VERSION := current
 
