@@ -67,7 +67,9 @@ import org.omnirom.omnilibcore.utils.OmniUtils;
 import org.omnirom.omnilibcore.utils.OmniVibe;
 import org.omnirom.omnilibcore.utils.PackageUtils;
 
+#ifdef USE_UDFPS
 import vendor.goodix.hardware.biometrics.fingerprint.V2_1.IGoodixFingerprintDaemon;
+#endif
 
 public class KeyHandler implements DeviceKeyHandler {
 
@@ -95,11 +97,13 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final int KEY_GESTURE_Z = 44;
     private static final int KEY_SWIPEUP_GESTURE = 103;
 
+#ifdef USE_UDFPS
     private static final int KEY_FOD_PRESSED = 33;
     private static final int KEY_FOD_UP = 22;
     private static final String LOCAL_HBM_ON = "1";
     private static final String LOCAL_HBM_OFF = "0";
     private static final String LOCAL_HBM_PATH = "/proc/localHbm";
+#endif
 
     private static final int MIN_PULSE_INTERVAL_MS = 2500;
     private static final String DOZE_INTENT = "com.android.systemui.doze.pulse";
@@ -123,8 +127,10 @@ public class KeyHandler implements DeviceKeyHandler {
         KEY_GESTURE_PAUSE,
         KEY_GESTURE_FORWARD,
         KEY_GESTURE_REWIND,
+#ifdef USE_UDFPS
         KEY_FOD_PRESSED,
         KEY_FOD_UP
+#endif
     };
 
     private static final int[] sProxiCheckedGestures = new int[]{
@@ -307,7 +313,8 @@ public class KeyHandler implements DeviceKeyHandler {
     public boolean handleKeyEvent(KeyEvent event) {
         if (event.getAction() != KeyEvent.ACTION_UP) {
             return false;
-        } else if ((event.getScanCode() == KEY_FOD_PRESSED) && (DeviceSettings.isRog3)) {
+#ifdef USE_UDFPS
+        } else if (event.getScanCode() == KEY_FOD_PRESSED) {
             try {
                 IGoodixFingerprintDaemon goodixDaemon = IGoodixFingerprintDaemon.getService();
                 goodixDaemon.sendCommand(200001, new java.util.ArrayList<Byte>(), (returnCode, resultData) -> {
@@ -321,7 +328,7 @@ public class KeyHandler implements DeviceKeyHandler {
                     Log.e(TAG, "Tried sending pressed wakeup goodix daemon cmd failed", t);
             }
             return true;
-        } else if ((event.getScanCode() == KEY_FOD_UP) && (DeviceSettings.isRog3)) {
+        } else if (event.getScanCode() == KEY_FOD_UP) {
             try {
                 IGoodixFingerprintDaemon goodixDaemon = IGoodixFingerprintDaemon.getService();
                 Utils.writeLine(LOCAL_HBM_PATH, LOCAL_HBM_OFF);
@@ -332,6 +339,7 @@ public class KeyHandler implements DeviceKeyHandler {
                     Log.e(TAG, "Tried sending 200003 FOD UP goodix daemon cmd failed", t);
             }
             return true;
+#endif
         } else {
             return ArrayUtils.contains(sSupportedGestures, event.getScanCode());
         }
