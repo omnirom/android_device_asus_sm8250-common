@@ -216,8 +216,7 @@ PRODUCT_PACKAGES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH) \
-    vendor/qcom/opensource/display
+    $(LOCAL_PATH)
 
 # Systemhelper
 PRODUCT_PACKAGES += \
