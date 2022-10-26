@@ -6,8 +6,6 @@ allow system_app asus_motor_device:chr_file rw_file_perms;
 # Allow system_app to find asus_bspcam_hwservice
 allow system_app asus_bspcam_hwservice:hwservice_manager find;
 
-allow system_app sysfs_touch:file rw_file_perms;
-
 # Allow system_app to read/write for display gestures and smart key
 allow system_app vendor_proc_graphics:file { rw_file_perms setattr };
 allow system_app vendor_sysfs_gestures:file { rw_file_perms setattr };
