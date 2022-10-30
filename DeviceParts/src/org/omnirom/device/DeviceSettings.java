@@ -54,6 +54,7 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_GLOVE_SWITCH = "glove";
 
     private static final String KEY_CATEGORY_BATTERY = "category_battery";
+    private static final String KEY_CATEGORY_MOTOR = "category_motor";
     private static final String KEY_CATEGORY_GAMING = "category_gaming";
     private static final String KEY_CATEGORY_SCREEN = "screen";
     public static final String KEY_GAME_GENIE = "game_toolbar_app";
@@ -100,6 +101,8 @@ public class DeviceSettings extends PreferenceFragment implements
                 (PreferenceCategory) prefScreen.findPreference(KEY_CATEGORY_GAMING);
         final PreferenceCategory BatteryCategory =
                 (PreferenceCategory) prefScreen.findPreference(KEY_CATEGORY_BATTERY);
+        final PreferenceCategory MotorCategory =
+                (PreferenceCategory) prefScreen.findPreference(KEY_CATEGORY_MOTOR);
 
         mFrameModeRate = (ListPreference) findPreference(KEY_FRAME_MODE);
         int framevalue = Settings.System.getInt(getContext().getContentResolver(),
@@ -141,6 +144,9 @@ public class DeviceSettings extends PreferenceFragment implements
             mGripSensorPreference.setChecked(Settings.Global.getInt(getContext().getContentResolver(),
             FIELD_AIR_TRIGGER_ENABLE, 0) == 1);
             mGripSensorPreference.setOnPreferenceChangeListener(this);
+
+            // Remove the camera motor category for the Rog3
+            prefScreen.removePreference(MotorCategory);
         }
 
     }
