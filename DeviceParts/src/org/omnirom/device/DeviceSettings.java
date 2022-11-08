@@ -30,7 +30,7 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.UserHandle;
-import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -47,7 +47,7 @@ import android.widget.ListView;
 import android.util.Log;
 import java.util.Map;
 
-public class DeviceSettings extends PreferenceFragment implements
+public class DeviceSettings extends PreferenceFragmentCompat implements
         Preference.OnPreferenceChangeListener {
 
     public static final String KEY_SETTINGS_PREFIX = "device_setting_";
