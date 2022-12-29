@@ -23,3 +23,9 @@ get_prop(platform_app, vendor_camera_prop)
 
 # Allow SystemUI overlay to find NFC for the tile
 allow platform_app nfc_service:service_manager find;
+
+# for system/lib64/DataSet/ispDB/ParameterDB.db
+allow platform_app system_lib_file:file lock ;
+
+allow platform_app vendor_camera_data_file:dir create_dir_perms;
+allow platform_app vendor_camera_data_file:file create_file_perms;
