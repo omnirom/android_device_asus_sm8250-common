@@ -31,6 +31,13 @@
      "revision": "android-13.0"
    },
    {
+    "remote": "omnirom",
+    "repository": "android_hardware_qcom_display",
+    "target_path": "hardware/qcom-caf/sm8250/display",
+    "override": "platform/hardware/qcom/display",
+    "revision": "android-13.0-sm8250"
+   },
+   {
      "remote": "gitlab",
      "repository": "android_vendor_qcom_opensource_display",
      "target_path": "vendor/qcom/opensource/display",
@@ -59,5 +66,11 @@
      "repository": "android_vendor_qcom_opensource_interfaces",
      "target_path": "vendor/qcom/opensource/interfaces",
      "revision": "android-13.0"
+   },
+   {
+    "remote": "github",
+    "repository": "LineageOS/android_vendor_qcom_opensource_thermal-engine",
+    "target_path": "vendor/qcom/opensource/thermal-engine",
+    "revision": "lineage-20.0"
    }
 ]
