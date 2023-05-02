@@ -1,3 +1,4 @@
 get_prop(hal_health_default, vendor_health_prop)
 
 dontaudit hal_health_default system_prop:file read;
+allow hal_health_default sysfs:file { getattr open read };
