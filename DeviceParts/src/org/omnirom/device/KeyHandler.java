@@ -167,7 +167,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private SensorEventListener mProximitySensor = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
-            mProxyIsNear = event.values[0] == 1;
+            mProxyIsNear = event.values[0] < mPocketSensor.getMaximumRange();
 
             if (DEBUG_SENSOR) Log.i(TAG, "mProxyIsNear = " + mProxyIsNear + " mProxyWasNear = " + mProxyWasNear);
             if (mUseWaveCheck || mUsePocketCheck) {
