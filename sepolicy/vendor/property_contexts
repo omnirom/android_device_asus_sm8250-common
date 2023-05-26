@@ -67,6 +67,9 @@ ro.vendor.smartcharging                         u:object_r:vendor_health_prop:s0
 persist.vendor.pps.power_limit_w                u:object_r:vendor_health_prop:s0
 persist.vendor.chg.max_volt_mv                  u:object_r:vendor_health_prop:s0
 
+# Display
+vendor.drm.keystatus                            u:object_r:vendor_display_prop:s0
+
 # Fingerprint
 vendor.fp.version.driver                        u:object_r:vendor_gx_fpd_prop:s0
 vendor.asus.fp.wakeup                           u:object_r:vendor_gx_fpd_prop:s0
