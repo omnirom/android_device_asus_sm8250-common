@@ -84,6 +84,12 @@
     <string name="grip_category_title">Launch AirTriggers</string>
     <string name="grip_category_summary">Settings of your Grip Sensor</string>
 
+    <!-- AudioWizard -->
+    <string name="audio_title">Audio Settings</string>
+    <string name="audio_summary">Audio Settings of the device</string>
+    <string name="audiowizard_entry_title">AudioWizard</string>
+    <string name="outdoor_mode_title">Outdoor mode</string>
+
     <!-- System Performance -->
     <string name="battery_manager">System Performance</string>
     <string name="battery_calibration_title">PowerMaster</string>
