@@ -53,6 +53,7 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_SETTINGS_PREFIX = "device_setting_";
     public static final String KEY_GLOVE_SWITCH = "glove";
 
+    private static final String KEY_CATEGORY_AUDIO = "audio_category";
     private static final String KEY_CATEGORY_BATTERY = "category_battery";
     private static final String KEY_CATEGORY_MOTOR = "category_motor";
     private static final String KEY_CATEGORY_GAMING = "category_gaming";
@@ -93,6 +94,8 @@ public class DeviceSettings extends PreferenceFragment implements
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.main, rootKey);
         final PreferenceScreen prefScreen = getPreferenceScreen();
+        final PreferenceCategory AudioCategory =
+                (PreferenceCategory) prefScreen.findPreference(KEY_CATEGORY_AUDIO);
         final PreferenceCategory fpsCategory =
                 (PreferenceCategory) prefScreen.findPreference(KEY_FRAME_CATEGORY);
         final PreferenceCategory fpsCategoryzf7 =
@@ -123,6 +126,7 @@ public class DeviceSettings extends PreferenceFragment implements
         } else {
             prefScreen.removePreference(fpsCategory);
             prefScreen.removePreference(BatteryCategory);
+            prefScreen.removePreference(AudioCategory);
         }
 
         mGloveModeSwitch = (TwoStatePreference) findPreference(KEY_GLOVE_SWITCH);
