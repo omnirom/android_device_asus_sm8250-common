@@ -54,7 +54,6 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String KEY_GLOVE_SWITCH = "glove";
 
     private static final String KEY_CATEGORY_AUDIO = "audio_category";
-    private static final String KEY_CATEGORY_BATTERY = "category_battery";
     private static final String KEY_CATEGORY_MOTOR = "category_motor";
     private static final String KEY_CATEGORY_GAMING = "category_gaming";
     private static final String KEY_CATEGORY_SCREEN = "screen";
@@ -102,8 +101,6 @@ public class DeviceSettings extends PreferenceFragment implements
                 (PreferenceCategory) prefScreen.findPreference(KEY_FRAME_CATEGORY_ZF7);
         final PreferenceCategory GamingCategory =
                 (PreferenceCategory) prefScreen.findPreference(KEY_CATEGORY_GAMING);
-        final PreferenceCategory BatteryCategory =
-                (PreferenceCategory) prefScreen.findPreference(KEY_CATEGORY_BATTERY);
         final PreferenceCategory MotorCategory =
                 (PreferenceCategory) prefScreen.findPreference(KEY_CATEGORY_MOTOR);
 
@@ -125,7 +122,6 @@ public class DeviceSettings extends PreferenceFragment implements
             prefScreen.removePreference(fpsCategoryzf7);
         } else {
             prefScreen.removePreference(audioCategory);
-            prefScreen.removePreference(BatteryCategory);
             prefScreen.removePreference(fpsCategory);
         }
 

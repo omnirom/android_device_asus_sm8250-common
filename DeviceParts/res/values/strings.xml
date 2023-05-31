@@ -90,11 +90,6 @@
     <string name="audiowizard_entry_title">AudioWizard</string>
     <string name="outdoor_mode_title">Outdoor mode</string>
 
-    <!-- System Performance -->
-    <string name="battery_manager">System Performance</string>
-    <string name="battery_calibration_title">PowerMaster</string>
-    <string name="battery_calibration_summary">X Mode, Dynamic, Ultra durable, Advanced</string>
-
     <!-- Volume panel QS tile -->
     <string name="volume_mode">Sound</string>
     <string name="vibrate_mode">Vibrate</string>
