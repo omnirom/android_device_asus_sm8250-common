@@ -22,7 +22,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import androidx.preference.PreferenceManager;
-import android.os.UserHandle;
 import android.provider.Settings;
 import android.text.TextUtils;
 
@@ -62,10 +61,6 @@ public class Startup extends BroadcastReceiver {
     public void onReceive(final Context context, final Intent bootintent) {
         maybeImportOldSettings(context);
         restoreAfterUserSwitch(context);
-        if (DeviceSettings.isRog3) {
-            context.startServiceAsUser(new Intent(context, GripSensorServiceMain.class),
-                UserHandle.CURRENT);
-        }
     }
 
     public static void restoreAfterUserSwitch(Context context) {

@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.INJECT_EVENTS" />
-    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="com.asus.focusapplistener.permission.GAME_GENIE_PROVIDER"/>
     <uses-permission android:name="com.asus.hardwarestub.permission.FPS_CENTRAL_CONTROL_SERVICE"/>
@@ -121,9 +120,6 @@
                 <action
                     android:name="android.service.quicksettings.action.QS_TILE"/>
             </intent-filter>
-        </service>
-        <service android:name="org.omnirom.device.GripSensorServiceMain"
-                 android:permission="AsusGripSensorHelperService">
         </service>
     </application>
 </manifest>
