@@ -84,9 +84,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/fstab.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
-
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4 \
