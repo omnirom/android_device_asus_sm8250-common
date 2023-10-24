@@ -23,6 +23,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 PRODUCT_PACKAGES += \
     FrameworksResOverlay \
+    OmniRomResInternalOverlay \
     SettingsOverlay \
     SettingsProviderOverlay \
     SystemUIOverlay \
