@@ -68,7 +68,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl \
     android.hardware.audio.effect@6.0-impl \
-    android.hardware.audio.service
+    android.hardware.audio.service \
+    android.media.audio.common.types-V1-cpp
 
 # Authsecret
 PRODUCT_PACKAGES += \
