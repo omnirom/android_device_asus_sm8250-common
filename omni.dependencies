@@ -3,20 +3,20 @@
     "remote": "omnirom",
     "repository": "android_device_qcom_caf-sepolicy",
     "target_path": "device/qcom/sepolicy",
-    "revision": "android-13.0"
+    "revision": "android-14.0"
    },
    {
     "remote": "omnirom",
     "repository": "android_device_qcom_sepolicy_vndr",
     "target_path": "device/qcom/sepolicy_vndr",
-    "revision": "android-13.0"
+    "revision": "android-14.0"
    },
    {
     "remote": "omnirom",
     "repository": "android_hardware_qcom_wlan",
     "target_path": "hardware/qcom-caf/wlan",
     "override": "platform/hardware/qcom/wlan",
-    "revision": "android-13.0"
+    "revision": "android-14.0"
    },
    {
     "remote": "omnirom",
