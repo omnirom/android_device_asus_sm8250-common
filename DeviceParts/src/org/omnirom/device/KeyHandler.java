@@ -62,10 +62,10 @@ import android.view.WindowManagerGlobal;
 import com.android.internal.util.ArrayUtils;
 import com.android.internal.statusbar.IStatusBarService;
 
-import org.omnirom.omnilibcore.utils.DeviceKeyHandler;
-import org.omnirom.omnilibcore.utils.OmniUtils;
-import org.omnirom.omnilibcore.utils.OmniVibe;
-import org.omnirom.omnilibcore.utils.PackageUtils;
+import org.omnirom.omnilib.utils.DeviceKeyHandler;
+import org.omnirom.omnilib.utils.OmniUtils;
+import org.omnirom.omnilib.utils.OmniVibe;
+import org.omnirom.omnilib.utils.PackageUtils;
 
 import vendor.goodix.hardware.biometrics.fingerprint.V2_1.IGoodixFingerprintDaemon;
 
