@@ -28,7 +28,7 @@
      "remote": "gitlab",
      "repository": "android_hardware_omni_compat",
      "target_path": "hardware/omni/compat",
-     "revision": "android-13.0"
+     "revision": "android-14.0"
    },
    {
     "remote": "omnirom",
