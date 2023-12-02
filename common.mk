@@ -68,7 +68,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.audio@6.0-impl \
     android.hardware.audio.effect@6.0-impl \
-    android.hardware.audio.service
+    android.hardware.audio.service \
+    libcodec2_hidl@1.0.vendor \
+    libcodec2_vndk.vendor
 
 # Authsecret
 PRODUCT_PACKAGES += \
