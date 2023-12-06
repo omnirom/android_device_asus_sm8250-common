@@ -1,4 +1,5 @@
 # Battery
+genfscon sysfs /devices/platform/soc/884000.i2c/i2c-5/5-0010/884000.i2c:qcom,smb1390@10:qcom,charge_pump/power_supply/charge_pump_master               u:object_r:vendor_sysfs_usb_supply:s0
 genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/ultra_bat_life                  u:object_r:vendor_sysfs_battery_supply:s0
 genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/TypeC_Side_Detect2              u:object_r:vendor_sysfs_battery_supply:s0
 genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:vadc@3100/iio:device1/in_temp_wp_therm_input   u:object_r:vendor_sysfs_battery_supply:s0
