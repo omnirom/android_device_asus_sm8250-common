@@ -108,7 +108,6 @@ PRODUCT_PACKAGES += \
 
 # Compatibility files
 PRODUCT_PACKAGES += \
-    android.hardware.light-V1-ndk_platform.vendor \
     android.hardware.power-V1-ndk_platform.vendor
 
 # DeviceParts
@@ -197,6 +196,11 @@ PRODUCT_PACKAGES += \
 # Keymaster
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.1.vendor
+
+# Lights
+PRODUCT_PACKAGES += \
+    android.hardware.light-V1-ndk_platform.vendor \
+    lights.kona
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
