@@ -100,6 +100,10 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4 \
     android.hardware.camera.device@3.4
 
+# Cas
+PRODUCT_PACKAGES += \
+    android.hardware.cas@1.2
+
 # Charger images
 PRODUCT_PACKAGES += \
     omni_charger_res_images \
