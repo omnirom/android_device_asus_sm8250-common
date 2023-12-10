@@ -11,3 +11,10 @@ prebuilt_hidl_interfaces {
         "vendor.qti.hardware.wigig.netperftuner@1.0::INetPerfTuner",
     ],
 }
+
+prebuilt_hidl_interfaces {
+    name: "hidl_asus_bspcam_interface",
+    interfaces: [
+        "vendor.asus.bspcam@1.0::IAsusBspCameraInterface",
+    ],
+}
