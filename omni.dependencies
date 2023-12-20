@@ -13,6 +13,13 @@
    },
    {
     "remote": "omnirom",
+    "repository": "android_external_tinycompress",
+    "target_path": "external/tinycompress",
+    "override": "platform/external/tinycompress",
+    "revision": "android-14.0"
+   },
+   {
+    "remote": "omnirom",
     "repository": "android_hardware_qcom_wlan",
     "target_path": "hardware/qcom-caf/wlan",
     "override": "platform/hardware/qcom/wlan",
