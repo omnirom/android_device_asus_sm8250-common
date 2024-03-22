@@ -1,8 +1,5 @@
 soong_namespace {
-    imports: [
-        "hardware/qcom/bootctrl",
-        "vendor/omni/build/soong",
-    ],
+    imports: ["hardware/qcom/bootctrl"],
 }
 
 prebuilt_hidl_interfaces {
