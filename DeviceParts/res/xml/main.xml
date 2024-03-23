@@ -97,7 +97,7 @@
     <PreferenceCategory
         android:key="screen"
         android:title="@string/screen_title">
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:key="glove"
             android:summary="@string/glove_mode_summary"
             android:title="@string/glove_mode_title"
@@ -108,7 +108,7 @@
         android:key="category_gaming"
         android:title="@string/gaming_title">
 
-        <SwitchPreference
+        <SwitchPreferenceCompat
             android:key="grip_sensor_apk"
             android:title="@string/asus_advanced_settings_gripsensor"
             android:persistent="false" />

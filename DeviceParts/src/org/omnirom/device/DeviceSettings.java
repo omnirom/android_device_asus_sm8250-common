@@ -35,7 +35,7 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
-import androidx.preference.SwitchPreference;
+import androidx.preference.SwitchPreferenceCompat;
 import androidx.preference.TwoStatePreference;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -77,7 +77,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private static Preference mAirtriggerPref;
     private static ListPreference mFrameModeRate;
     private static ListPreference mFrameModeRateZF7;
-    private static SwitchPreference mGripSensorPreference;
+    private static SwitchPreferenceCompat mGripSensorPreference;
     private static TwoStatePreference mGloveModeSwitch;
     private static Preference mGameGenie;
 
@@ -140,7 +140,7 @@ public class DeviceSettings extends PreferenceFragment implements
         }
 
         if (isRog3) {
-            mGripSensorPreference = (SwitchPreference) findPreference(KEY_AIRTRIGGER);
+            mGripSensorPreference = (SwitchPreferenceCompat) findPreference(KEY_AIRTRIGGER);
             mGripSensorPreference.setChecked(Settings.Global.getInt(getContext().getContentResolver(),
             FIELD_AIR_TRIGGER_ENABLE, 0) == 1);
             mGripSensorPreference.setOnPreferenceChangeListener(this);
