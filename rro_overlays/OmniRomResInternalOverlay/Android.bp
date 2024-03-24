@@ -1,4 +1,5 @@
 runtime_resource_overlay {
     name: "OmniRomResInternalOverlay",
+    theme: "OmniRomResInternalOverlay",
     product_specific: true,
 }

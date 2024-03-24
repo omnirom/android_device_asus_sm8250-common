@@ -1,4 +1,5 @@
 runtime_resource_overlay {
     name: "SettingsProviderOverlay",
+    theme: "SettingsProviderOverlay",
     product_specific: true,
 }
