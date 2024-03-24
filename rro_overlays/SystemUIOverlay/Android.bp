@@ -1,4 +1,5 @@
 runtime_resource_overlay {
     name: "SystemUIOverlay",
+    theme: "SystemUIOverlay",
     product_specific: true,
 }
