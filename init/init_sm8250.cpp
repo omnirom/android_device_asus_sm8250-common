@@ -72,6 +72,32 @@ void property_override_dual(char const prop[], char const system_prop[],
     property_override(system_prop, value);
 }
 
+void ro_prop_override(char const source[], char const prop[],
+    const std::string& value, bool product)
+{
+    std::string prop_name = "ro.";
+
+    if (product) prop_name += "product.";
+    if (source != nullptr) prop_name += source;
+    if (!product) prop_name += "build.";
+    prop_name += prop;
+
+    property_override(prop_name.c_str(), value);
+};
+
+static const char* RO_PROP_SOURCES[] = {
+    nullptr,
+    "bootimage.",
+    "odm.",
+    "odm_dlkm.",
+    "product.",
+    "system.",
+    "system_dlkm.",
+    "system_ext.",
+    "vendor.",
+    "vendor_dlkm.",
+};
+
 /* From Magisk@jni/magiskhide/hide_utils.c */
 static const char *snet_prop_key[] = {
     "ro.boot.vbmeta.device_state",
@@ -169,7 +195,16 @@ static void set_fingerprint()
     property_override("ro.vendor.build.asus.version", build_asus);
     property_override("ro.vendor.build.software.version", build_asus);
     property_override("ro.build.description", description);
-    property_override_dual("ro.build.fingerprint", "ro.system.build.fingerprint", fingerprint);
+
+    for (const auto& source : RO_PROP_SOURCES) {
+        ro_prop_override(source, "brand", "asus", true);
+        ro_prop_override(source, "device", "ASUS_I002D", true);
+        ro_prop_override(source, "manufacturer", "asus", true);
+        ro_prop_override(source, "model", "ASUS_I002D", true);
+        ro_prop_override(source, "name", name, true);
+
+        ro_prop_override(source, "fingerprint", fingerprint, false);
+    }
 }
 
 void vendor_load_properties()
