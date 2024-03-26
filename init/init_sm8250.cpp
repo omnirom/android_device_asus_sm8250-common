@@ -30,6 +30,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <android-base/file.h>
 #include <android-base/properties.h>
 #include <android-base/logging.h>
 #include "property_service.h"
@@ -37,11 +38,15 @@
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
+#define CUSTOMER_FILE "/mnt/vendor/persist/CUSTOMER"
+#define IDCODE_FILE "/mnt/vendor/persist/COLOR"
+#define VARIANT_FILE "/mnt/vendor/persist/COUNTRY"
+
 namespace android {
 namespace init {
 
 using android::base::GetProperty;
-using ::android::base::SetProperty;
+using android::base::ReadFileToString;
 
 void property_override(const std::string& name, const std::string& value)
 {
@@ -58,6 +63,13 @@ void property_override(const std::string& name, const std::string& value)
                        << "__system_property_add failed";
         }
     }
+}
+
+void property_override_dual(char const prop[], char const system_prop[],
+    const std::string& value)
+{
+    property_override(prop, value);
+    property_override(system_prop, value);
 }
 
 /* From Magisk@jni/magiskhide/hide_utils.c */
@@ -89,11 +101,84 @@ static const char *snet_prop_key[] = {
     }
 }
 
+static void set_configs()
+{
+    std::string variantValue;
+
+    if (ReadFileToString(CUSTOMER_FILE, &variantValue)) {
+        property_override("ro.vendor.config.CID", variantValue.c_str());
+    }
+    if (ReadFileToString(IDCODE_FILE, &variantValue)) {
+        property_override("ro.vendor.config.idcode", variantValue.c_str());
+    }
+    if (ReadFileToString(VARIANT_FILE, &variantValue)) {
+        property_override("ro.vendor.config.versatility", variantValue.c_str());
+    }
+}
+
+static void set_fingerprint()
+{
+    std::string build_asus;
+    std::string build_id;
+    std::string build_number;
+    std::ostringstream fp;
+    std::string fingerprint;
+    std::string name;
+    std::string variant;
+    std::ostringstream desc;
+    std::string description;
+    std::ostringstream disp;
+    std::string display_id;
+
+    LOG(INFO) << "Starting custom init";
+
+    variant = GetProperty("ro.vendor.config.versatility", "");
+
+    // Set the default "name" string and below properties based on variant name
+    if (variant == "EU") {
+        property_override("ro.product.vendor.name", "EU_I002D");
+        property_override("ro.vendor.product.carrier", "EU-ASUS_I002D-WW");
+    } else if (variant == "RU") {
+        property_override("ro.product.vendor.model", "ZS670KS");
+        property_override("ro.product.vendor.name", "RU_I002D");
+        property_override("ro.vendor.product.carrier", "RU-ASUS_I002D-WW");
+    } else {
+        property_override("ro.product.vendor.name", "WW_I002D");
+        property_override("ro.vendor.product.carrier", "WW-ASUS_I002D-WW");
+    }
+
+    name = GetProperty("ro.product.vendor.name", "");
+
+    LOG(INFO) << name;
+
+    // These should be the only things to change for OTA updates
+    build_asus = "31.0210.0210.324";
+    build_id = "SKQ1.210821.001";
+    build_number = "31.0210.0210.324";
+
+    // Create the correct stock props based on the above values
+    desc << name << "-user 12 " << build_id << " " << build_number << " release-keys";
+    description = desc.str();
+
+    fp << "asus/" << name << "/ASUS_I002D:12/" << build_id << "/" << build_number << ":user/release-keys";
+    fingerprint = fp.str();
+
+    // These properties are the same for all variants
+    property_override("ro.vendor.build.asus.number", build_number);
+    property_override("ro.vendor.build.asus.sku", "WW");
+    property_override("ro.vendor.build.asus.version", build_asus);
+    property_override("ro.vendor.build.software.version", build_asus);
+    property_override("ro.build.description", description);
+    property_override_dual("ro.build.fingerprint", "ro.system.build.fingerprint", fingerprint);
+}
+
 void vendor_load_properties()
 {
     // SafetyNet workaround
     property_override("ro.boot.verifiedbootstate", "green");
     workaround_snet_properties();
+    set_configs();
+    set_fingerprint();
 }
 
 } //init
