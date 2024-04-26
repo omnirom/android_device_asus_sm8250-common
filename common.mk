@@ -213,6 +213,16 @@ PRODUCT_PACKAGES += \
     VisualizationWallpapers \
     librs_jni
 
+# Media
+PRODUCT_PACKAGES += \
+    init.qti.media.sh \
+    libc2dcolorconvert \
+    libmm-omxcore \
+    libOmxCore \
+    libOmxVdec \
+    libOmxVenc \
+    libstagefrighthw
+
 # Netutils
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.1.vendor \

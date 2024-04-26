@@ -80,6 +80,7 @@ endif
 
 # Display
 TARGET_SCREEN_DENSITY := 420
+TARGET_USES_ION := true
 
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
