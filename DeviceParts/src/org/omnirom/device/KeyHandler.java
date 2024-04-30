@@ -113,6 +113,9 @@ public class KeyHandler implements DeviceKeyHandler {
     private static final String CLIENT_PACKAGE_PATH = "/data/misc/omni/client_package_name";
     private static final String VENDOR_PROPERTY = "vendor.camera.apk.usingname";
 
+    private static final String LIGHTS_PATH = "/sys/class/backlight/panel0-backlight/brightness";
+    private static final String LIGHTS_ASUS_PATH = "/proc/lcd_brightness";
+
     private static final int[] sSupportedGestures = new int[]{
     };
 
@@ -154,6 +157,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean mRestoreUser;
     private boolean mDoubleTapToWake;
     private ClientPackageNameObserver mClientObserver;
+    private LightPathObserver mLightPathObserver;
 
     private SensorEventListener mProximitySensor = new SensorEventListener() {
         @Override
@@ -284,6 +288,8 @@ public class KeyHandler implements DeviceKeyHandler {
             mClientObserver = new ClientPackageNameObserver(CLIENT_PACKAGE_PATH);
             mClientObserver.startWatching();
         }
+        mLightPathObserver = new LightPathObserver(LIGHTS_PATH);
+        mLightPathObserver.startWatching();
     }
 
     private class EventHandler extends Handler {
@@ -644,6 +650,22 @@ public class KeyHandler implements DeviceKeyHandler {
             if (event == FileObserver.MODIFY) {
                 Log.d(TAG, "Camera name in use = " + pkgName);
                 SystemProperties.set(VENDOR_PROPERTY, pkgName);
+            }
+        }
+    }
+
+    private class LightPathObserver extends FileObserver {
+
+        public LightPathObserver(String file) {
+            super(LIGHTS_PATH, MODIFY);
+        }
+
+        @Override
+        public void onEvent(int event, String file) {
+            String BlValue = Utils.getFileValue(LIGHTS_PATH, "0");
+            if (event == FileObserver.MODIFY) {
+                Log.d(TAG, "Backlight value = " + BlValue);
+                Utils.writeLine(LIGHTS_ASUS_PATH, BlValue);
             }
         }
     }
