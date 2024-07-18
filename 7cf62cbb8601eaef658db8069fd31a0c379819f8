@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5d281e7_a34005c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2024-07-18T15:26:16Z",
+      "side": 1,
+      "message": "need \nhttps://github.com/omnirom/android_device_asus_zenfone7/commit/455346a6f46d80b1c2a35aa8987469dd06c6e8b2",
+      "revId": "7cf62cbb8601eaef658db8069fd31a0c379819f8",
+      "serverId": "ed425d63-8d31-4f40-b4e0-dc35cc52d350"
+    }
+  ]
+}
