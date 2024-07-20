@@ -154,10 +154,13 @@ static const char *snet_prop_key[] = {
 };
 
  static void workaround_snet_properties() {
+    std::string build_type = GetProperty("ro.build.type", "");
 
-     // Hide all sensitive props
-    for (int i = 0; snet_prop_key[i]; ++i) {
-        property_override(snet_prop_key[i], snet_prop_value[i]);
+    if (build_type == "user") {
+         // Hide all sensitive props
+        for (int i = 0; snet_prop_key[i]; ++i) {
+            property_override(snet_prop_key[i], snet_prop_value[i]);
+        }
     }
 }
 
