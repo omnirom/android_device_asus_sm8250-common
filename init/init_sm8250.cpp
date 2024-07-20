@@ -33,6 +33,7 @@
 #include <android-base/file.h>
 #include <android-base/properties.h>
 #include <android-base/logging.h>
+#include <android-base/strings.h>
 #include "property_service.h"
 #include <sys/resource.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
@@ -47,6 +48,7 @@ namespace init {
 
 using android::base::GetProperty;
 using android::base::ReadFileToString;
+using android::base::StringReplace;
 
 void property_override(const std::string& name, const std::string& value)
 {
@@ -103,19 +105,51 @@ static const char *snet_prop_key[] = {
     "ro.boot.vbmeta.device_state",
     "ro.boot.verifiedbootstate",
     "ro.boot.flash.locked",
+    "ro.boot.selinux",
     "ro.boot.veritymode",
     "ro.boot.warranty_bit",
     "ro.warranty_bit",
+    "ro.debuggable",
+    "ro.secure",
+    "ro.build.type",
+    "ro.system.build.type",
+    "ro.system_ext.build.type",
+    "ro.vendor.build.type",
+    "ro.product.build.type",
+    "ro.odm.build.type",
+    "ro.build.keys",
+    "ro.build.tags",
+    "ro.system.build.tags",
+    "ro.vendor.boot.warranty_bit",
+    "ro.vendor.warranty_bit",
+    "vendor.boot.vbmeta.device_state",
+    "vendor.boot.verifiedbootstate",
     NULL
 };
 
  static const char *snet_prop_value[] = {
-    "locked",
-    "green",
-    "1",
-    "enforcing",
-    "0",
-    "0",
+    "locked", // ro.boot.vbmeta.device_state
+    "green", // ro.boot.verifiedbootstate
+    "1", // ro.boot.flash.locked
+    "enforcing", // ro.boot.selinux
+    "enforcing", // ro.boot.veritymode
+    "0", // ro.boot.warranty_bit
+    "0", // ro.warranty_bit
+    "0", // ro.debuggable
+    "1", // ro.secure
+    "user", // ro.build.type
+    "user", // ro.system.build.type
+    "user", // ro.system_ext.build.type
+    "user", // ro.vendor.build.type
+    "user", // ro.product.build.type
+    "user", // ro.odm.build.type
+    "release-keys", // ro.build.keys
+    "release-keys", // ro.build.tags
+    "release-keys", // ro.system.build.tags
+    "0", // ro.vendor.boot.warranty_bit
+    "0", // ro.vendor.warranty_bit
+    "locked", // vendor.boot.vbmeta.device_state
+    "green", // vendor.boot.verifiedbootstate
     NULL
 };
 
@@ -210,10 +244,15 @@ static void set_fingerprint()
 void vendor_load_properties()
 {
     // SafetyNet workaround
-    property_override("ro.boot.verifiedbootstate", "green");
     workaround_snet_properties();
     set_configs();
     set_fingerprint();
+
+    // Extra pops
+    std::string build_flavor_key = "ro.build.flavor";
+    std::string build_flavor_value = GetProperty(build_flavor_key, "");
+    build_flavor_value = StringReplace(build_flavor_value, "userdebug", "user", false);
+    property_override(build_flavor_key, build_flavor_value);
 }
 
 } //init
