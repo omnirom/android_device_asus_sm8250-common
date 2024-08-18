@@ -1,3 +1,2 @@
 # Common Add-on
 sys.vendor.qti.servicetracker.disable=true
-persist.sys.fflag.override.settings_provider_model=false
