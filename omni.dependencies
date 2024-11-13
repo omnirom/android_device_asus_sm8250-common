@@ -3,26 +3,26 @@
     "remote": "omnirom",
     "repository": "android_device_qcom_caf-sepolicy",
     "target_path": "device/qcom/sepolicy",
-    "revision": "android-14.0"
+    "revision": "android-15"
    },
    {
     "remote": "omnirom",
     "repository": "android_device_qcom_sepolicy_vndr",
     "target_path": "device/qcom/sepolicy_vndr",
-    "revision": "android-14.0"
+    "revision": "android-15"
    },
    {
     "remote": "omnirom",
     "repository": "android_external_tinycompress",
     "target_path": "external/tinycompress",
     "override": "platform/external/tinycompress",
-    "revision": "android-14.0"
+    "revision": "android-15"
    },
    {
     "remote": "omnirom",
     "repository": "android_hardware_qcom_wlan",
     "target_path": "hardware/qcom-caf/wlan",
-    "revision": "android-14.0"
+    "revision": "android-15-caf"
    },
    {
     "remote": "omnirom",
@@ -34,7 +34,7 @@
      "remote": "gitlab",
      "repository": "android_hardware_omni_compat",
      "target_path": "hardware/omni/compat",
-     "revision": "android-14.0"
+     "revision": "android-15"
    },
    {
     "remote": "omnirom",
