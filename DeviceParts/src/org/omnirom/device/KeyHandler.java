@@ -62,6 +62,10 @@ import android.view.WindowManagerGlobal;
 import com.android.internal.util.ArrayUtils;
 import com.android.internal.statusbar.IStatusBarService;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 import org.omnirom.omnilib.utils.DeviceKeyHandler;
 import org.omnirom.omnilib.utils.OmniSettings;
 import org.omnirom.omnilib.utils.OmniUtils;
@@ -154,6 +158,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean mRestoreUser;
     private boolean mDoubleTapToWake;
     private ClientPackageNameObserver mClientObserver;
+    private ExecutorService mExecutorService;
 
     private SensorEventListener mProximitySensor = new SensorEventListener() {
         @Override
@@ -284,6 +289,11 @@ public class KeyHandler implements DeviceKeyHandler {
             mClientObserver = new ClientPackageNameObserver(CLIENT_PACKAGE_PATH);
             mClientObserver.startWatching();
         }
+        mExecutorService = Executors.newSingleThreadExecutor();
+    }
+
+    private Future<?> submit(Runnable runnable) {
+        return mExecutorService.submit(runnable);
     }
 
     private class EventHandler extends Handler {
@@ -434,10 +444,14 @@ public class KeyHandler implements DeviceKeyHandler {
     private void onDisplayOn() {
         if (DEBUG) Log.i(TAG, "Display on");
         if (enableProxiSensor()) {
-            mSensorManager.unregisterListener(mProximitySensor, mPocketSensor);
+            submit(() -> {
+                mSensorManager.unregisterListener(mProximitySensor, mPocketSensor);
+            });
         }
         if (mUseTiltCheck) {
-            mSensorManager.unregisterListener(mTiltSensorListener, mTiltSensor);
+            submit(() -> {
+                mSensorManager.unregisterListener(mTiltSensorListener, mTiltSensor);
+            });
         }
         if ((mClientObserver == null) && (isASUSCameraAvail)) {
             mClientObserver = new ClientPackageNameObserver(CLIENT_PACKAGE_PATH);
@@ -456,13 +470,17 @@ public class KeyHandler implements DeviceKeyHandler {
         if (DEBUG) Log.i(TAG, "Display off");
         if (enableProxiSensor()) {
             mProxyWasNear = false;
-            mSensorManager.registerListener(mProximitySensor, mPocketSensor,
-                    SensorManager.SENSOR_DELAY_NORMAL);
-            mProxySensorTimestamp = SystemClock.elapsedRealtime();
+            submit(() -> {
+                mSensorManager.registerListener(mProximitySensor, mPocketSensor,
+                        SensorManager.SENSOR_DELAY_NORMAL);
+                mProxySensorTimestamp = SystemClock.elapsedRealtime();
+            });
         }
         if (mUseTiltCheck) {
-            mSensorManager.registerListener(mTiltSensorListener, mTiltSensor,
-                    SensorManager.SENSOR_DELAY_NORMAL);
+            submit(() -> {
+                mSensorManager.registerListener(mTiltSensorListener, mTiltSensor,
+                        SensorManager.SENSOR_DELAY_NORMAL);
+            });
         }
         if (mClientObserver != null) {
             mClientObserver.stopWatching();
