@@ -78,7 +78,7 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private static final String TAG = "KeyHandler";
     private static final boolean DEBUG = true;
-    private static final boolean DEBUG_SENSOR = true;
+    private static final boolean DEBUG_SENSOR = false;
 
     protected static final int GESTURE_REQUEST = 1;
     private static final int GESTURE_WAKELOCK_DURATION = 2000;
@@ -148,7 +148,6 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean mUseProxiCheck;
     private Sensor mTiltSensor;
     private boolean mUseTiltCheck;
-    private boolean mProxyWasNear;
     private long mProxySensorTimestamp;
     private boolean mUseWaveCheck;
     private Sensor mPocketSensor;
@@ -166,20 +165,23 @@ public class KeyHandler implements DeviceKeyHandler {
         public void onSensorChanged(SensorEvent event) {
             mProxyIsNear = event.values[0] < mPocketSensor.getMaximumRange();
 
-            if (DEBUG_SENSOR) Log.i(TAG, "mProxyIsNear = " + mProxyIsNear + " mProxyWasNear = " + mProxyWasNear);
+            if (DEBUG_SENSOR) Log.i(TAG, "mProxyIsNear = " + mProxyIsNear);
             if (mUseWaveCheck || mUsePocketCheck) {
-                if (mProxyWasNear && !mProxyIsNear) {
+                if (mProxyIsNear) {
                     long delta = SystemClock.elapsedRealtime() - mProxySensorTimestamp;
-                    if (DEBUG_SENSOR) Log.i(TAG, "delta = " + delta);
+                    if (DEBUG_SENSOR) Log.i(TAG, "delta " + delta + " = " +
+                                                                                 "elapsedRealtime " + SystemClock.elapsedRealtime() +
+                                                                                 " - " +
+                                                                                 "ProxySensorTimestamp " + mProxySensorTimestamp);
                     if (mUseWaveCheck && delta < HANDWAVE_MAX_DELTA_MS) {
                         launchDozePulse();
                     }
-                    if (mUsePocketCheck && delta > POCKET_MIN_DELTA_MS) {
+                    if (mUsePocketCheck && delta >= POCKET_MIN_DELTA_MS) {
                         launchDozePulse();
                     }
+                } else {
+                    mProxySensorTimestamp = SystemClock.elapsedRealtime();
                 }
-                mProxySensorTimestamp = SystemClock.elapsedRealtime();
-                mProxyWasNear = mProxyIsNear;
             }
             if (mUseProxiCheck) {
                 if (Utils.fileWritable(GOODIX_CONTROL_PATH)) {
@@ -476,7 +478,6 @@ public class KeyHandler implements DeviceKeyHandler {
     private void onDisplayOff() {
         if (DEBUG) Log.i(TAG, "Display off");
         if (enableProxiSensor()) {
-            mProxyWasNear = false;
             mProxySensorTimestamp = SystemClock.elapsedRealtime();
             submit(() -> {
                 mSensorManager.registerListener(mProximitySensor, mPocketSensor,
