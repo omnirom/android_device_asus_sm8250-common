@@ -20,6 +20,12 @@
    },
    {
     "remote": "omnirom",
+    "repository": "android_hardware_qcom_bootctrl",
+    "target_path": "hardware/qcom/bootctrl",
+    "revision": "android-15"
+    },
+   {
+    "remote": "omnirom",
     "repository": "android_hardware_qcom_wlan",
     "target_path": "hardware/qcom-caf/wlan",
     "revision": "android-15-caf"
