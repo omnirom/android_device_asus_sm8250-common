@@ -46,7 +46,7 @@
     "remote": "omnirom",
     "repository": "android_hardware_qcom_display",
     "target_path": "hardware/qcom-caf/sm8250/display",
-    "revision": "android-13.0-sm8250"
+    "revision": "android-15-sm8250"
    },
    {
      "remote": "gitlab",
