@@ -153,7 +153,6 @@ $(call inherit-product, vendor/qcom/opensource/commonsys-intf/display/config/dis
 $(call inherit-product, vendor/qcom/opensource/commonsys-intf/display/config/display-product-system.mk)
 
 -include hardware/qcom-caf/sm8250/display/config/display-board.mk
--include hardware/qcom-caf/sm8250/display/config/display-product.mk
 
 # DRM
 PRODUCT_PACKAGES += \
