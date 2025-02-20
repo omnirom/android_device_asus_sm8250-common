@@ -178,7 +178,10 @@ PRODUCT_PACKAGES += \
 # Mount Point symlinks
 PRODUCT_PACKAGES += \
     mnt_point_asusfw_symlink \
-    mnt_point_factory_symlink
+    mnt_point_factory_symlink \
+    vendor_bt_firmware_mountpoint \
+    vendor_dsp_mountpoint \
+    vendor_firmware_mnt_mountpoint
 
 # Netutils
 PRODUCT_PACKAGES += \
