@@ -76,12 +76,18 @@
      "remote": "omnirom",
      "repository": "android_vendor_qcom_opensource_interfaces",
      "target_path": "vendor/qcom/opensource/interfaces",
-     "revision": "android-13.0"
+     "revision": "android-15"
    },
    {
     "remote": "github",
     "repository": "LineageOS/android_vendor_qcom_opensource_thermal-engine",
     "target_path": "vendor/qcom/opensource/thermal-engine",
     "revision": "lineage-20.0"
+   },
+   {
+    "remote": "github",
+    "repository": "LineageOS/android_vendor_qcom_opensource_core-utils-vendor",
+    "target_path": "vendor/qcom/opensource/core-utils-vendor",
+    "revision": "lineage-22.1"
    }
 ]
