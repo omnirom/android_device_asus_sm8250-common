@@ -92,8 +92,7 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4 \
-    android.hardware.camera.device@3.4
+    android.hardware.camera.provider@2.4-impl
 
 # Cas
 PRODUCT_PACKAGES += \
