@@ -84,12 +84,10 @@ genfscon sysfs /devices/platform/soc/soc:qcom,pmic_glink_log/wakeup             
 genfscon sysfs /devices/platform/soc/soc:qcom,trustedvm@d0800000/wakeup                                                             u:object_r:sysfs_wakeup:s0
 
 # Wakeup (from stock)
-genfscon sysfs /devices/platform/soc/171c0000.slim/tavil-slim-pgd/wakeup/wakeup                 u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/soc/a84000.i2c/i2c-3/3-0029/wakeup/wakeup                      u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/soc/soc:asustek_googlekey/wakeup/wakeup                        u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/vendor/vendor:extcon_usb1/wakeup/wakeup                        u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/soc/88e0000.qcom,msm-eud/wakeup/wakeup                         u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/soc/18800000.qcom,icnss/wakeup/wakeup                          u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/soc/soc:asustek_lid2/wakeup/wakeup                             u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/soc/soc:asustek_lid/wakeup/wakeup                              u:object_r:sysfs_wakeup:s0
-genfscon sysfs /devices/platform/soc/soc:gpio_keys/wakeup/wakeup                                u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/171c0000.slim/tavil-slim-pgd/wakeup                 u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/a84000.i2c/i2c-3/3-0029/wakeup                      u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:asustek_googlekey/wakeup                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/vendor/vendor:extcon_usb1/wakeup                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/18800000.qcom,icnss/wakeup                          u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:asustek_lid2/wakeup                             u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/soc/soc:asustek_lid/wakeup                              u:object_r:sysfs_wakeup:s0
