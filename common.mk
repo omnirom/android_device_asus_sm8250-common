@@ -163,10 +163,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libinit_sm8250
 
-# Lights
-PRODUCT_PACKAGES += \
-    lights.kona
-
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     LiveWallpapers \
