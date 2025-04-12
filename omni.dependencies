@@ -34,7 +34,7 @@
     "remote": "omnirom",
     "repository": "android_vendor_codeaurora_telephony",
     "target_path": "vendor/codeaurora/telephony",
-    "revision": "android-14.0"
+    "revision": "android-15"
    },
    {
      "remote": "gitlab",
