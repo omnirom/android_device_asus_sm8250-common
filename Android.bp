@@ -1,9 +1,5 @@
 soong_namespace {
-    imports: [
-        "hardware/qcom/bootctrl",
-        "hardware/google/interfaces",
-        "hardware/google/pixel",
-    ],
+    imports: ["hardware/qcom/bootctrl"],
 }
 
 prebuilt_hidl_interfaces {
